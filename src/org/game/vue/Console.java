@@ -20,11 +20,15 @@ public class Console {
         for(int i=-1; i<rows; i++){
             for(int j=-1; j<cols; j++){
                 if(i==-1){
-                    System.out.print(j);
+                    if(j==-1){
+                        System.out.print("   ");
+                    }else{
+                        System.out.printf("%3d",j);                        
+                    }
                 }else if(j==-1 && i!=-1){
-                    System.out.print(i);
+                    System.out.printf("%3d",i);
                 }else{
-                    System.out.print(grid.getCase(i, j).getSymbol());
+                    System.out.printf("%3c",grid.getCase(i, j).getSymbol());
                 }
             }
             System.out.println("");
@@ -37,14 +41,18 @@ public class Console {
         for(int i=-1; i<rows; i++){
             for(int j=-1; j<cols; j++){
                 if(i==-1){
-                    System.out.print(j);
+                    if(j==-1){
+                        System.out.print("   ");
+                    }else{
+                        System.out.printf("%3d",j);                       
+                    }
                 }else if(j==-1 && i!=-1){
-                    System.out.print(i);
+                    System.out.printf("%3d",i);
                 }else{
                     if(!grid.getCase(i, j).isMined()){
-                        System.out.print(grid.getCase(i, j).getSymbol());  
+                        System.out.printf("%3c",grid.getCase(i, j).getSymbol());  
                     }else{
-                        System.out.print('x');
+                        System.out.print("  x");
                     }
                 }
             }
@@ -53,8 +61,20 @@ public class Console {
     }
     
     public static String getInstructions(){
+        System.out.println("What is your instruction?");
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
     
+    public static String getInitialisation(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How much columns?");
+        String str = sc.nextLine() + " ";
+        System.out.println("How much rows?");
+        str += sc.nextLine() + " ";
+        System.out.println("What percent of mines?");
+        str += sc.nextLine();
+        return str;
+        
+    }
 }
