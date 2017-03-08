@@ -14,12 +14,17 @@ public class Deminer {
 	private GameGrid gameModel;
 	private boolean debugMode;
 
+	private boolean end;
+
 	public void init() {
 		this.gameModel = GameGenerator.generate();
+		this.end = false;
 	}
 
 	public void update() {
+		//GameController.manageInput("");
 
+		this.end = true;
 	}
 
 	public void render() {
