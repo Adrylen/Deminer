@@ -12,34 +12,42 @@ import org.game.models.GameGrid;
 import org.game.vue.Console;
 
 public class Deminer {
+	private Console console;
 	private GameGrid gameModel;
-	private boolean debugMode;
+	private GameController controls;
 
+	private boolean debugMode;
 	private boolean end;
 
-	public void init() {
-		this.gameModel = GameGenerator.generate();
+	public Deminer() {
+		this.controls = new GameController();
+		this.console = new Console(this.controls);
+		this.controls.addObserver(this.console);
 		this.end = false;
 	}
 
-	public void update() {
-		GameController.manageInput("d");
+	public void init() {
+		String inits = "";
+		do {
+			inits = this.console.getInitialisation();
+		} while(!this.controls.manageInit(inits));
 
-		this.end = true;
+		this.gameModel = GameGenerator.generate(this.controls.getInits());
+		this.console.display(this.gameModel);
 	}
 
-	public void render() {
-		Console.display(this.gameModel);
+	public void update() {
+		this.controls.manageInput(this.gameModel, this.console.getInstructions());
+		this.end = controls.gameIsClosed();
 	}
 
 	public void close() {
-		render();
+		this.console.display(this.gameModel);
 	}
 
 	public void run() {
 		init();
 		do {
-			render();
 			update();
 		} while(!this.end);
 //		close();

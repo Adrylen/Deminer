@@ -57,6 +57,10 @@ class GameGenerator {
 		return grid;
 	}
 
+	public static GameGrid generate(int[] inits) {
+		return generate(inits[0], inits[1], inits[2]);
+	}
+
 	public static GameGrid generate() {
 		return generate(MIN_ROWS, MIN_COLS, MIN_PERCENT);
 	}

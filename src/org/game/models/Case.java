@@ -13,7 +13,6 @@ public class Case {
 	private boolean mined;
 	private boolean markedAsMined;
 	private boolean markedAsIndeterminate;
-	private boolean hasNeighbors;
 
 	private int neighbors;
 	private char symbol;
@@ -23,16 +22,16 @@ public class Case {
 		this.mined = false;
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
-		this.hasNeighbors = false;
 
 		this.neighbors = 0;
 		this.symbol = '#';
 	}
 
 	public void show() {
-		this.hidden = true;
+		this.hidden = false;
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
+		this.symbol = this.mined ? 'x' : this.neighbors != 0 ? (char)(this.neighbors+'0') : '.';
 	}
 
 	public void mine() {
@@ -42,15 +41,19 @@ public class Case {
 	public void markAsMined() {
 		this.markedAsMined = true;
 		this.markedAsIndeterminate = false;
+		this.symbol = '!';
 	}
 
 	public void markAsIndeterminate() {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = true;
+		this.symbol = '?';
 	}
 
-	public void hasNeighbors(boolean has) {
-		this.hasNeighbors = has;
+	public void unmark() {
+		this.markedAsMined = false;
+		this.markedAsIndeterminate = false;
+		this.symbol = '#';
 	}
 
 	public void addNeighbor() {
@@ -82,7 +85,7 @@ public class Case {
 	}
 
 	public boolean hasNeighbors() {
-		return this.hasNeighbors;
+		return this.neighbors != 0;
 	}
 
 	public int getNeighbors() {

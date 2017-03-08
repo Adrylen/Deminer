@@ -5,6 +5,8 @@
  */
 package org.game.vue;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 import org.game.models.GameGrid;
 
@@ -12,9 +14,29 @@ import org.game.models.GameGrid;
  *
  * @author kieffersarah
  */
-public class Console {
+public class Console implements Observer {
+	private Observable control = null;
+	private boolean debugMode = false;
+
+	public Console(Observable control) {
+		this.control = control;
+	}
+
+	public void update(Observable obs, Object obj) {
+		if(this.control == obs) {
+			if(obj instanceof GameGrid) {
+				if (!this.debugMode) {
+					this.display((GameGrid) obj);
+				} else {
+					this.displayBug((GameGrid) obj);
+				}
+			} else {
+				this.debugMode = !this.debugMode;
+			}
+		}
+	}
     
-    public static void display(GameGrid grid){
+    public void display(GameGrid grid){
         int rows = grid.getRows();
         int cols = grid.getCols();
         for(int i=-1; i<rows; i++){
@@ -35,7 +57,7 @@ public class Console {
         }
     }
     
-    public static void displayBug(GameGrid grid){
+    public void displayBug(GameGrid grid){
         int rows = grid.getRows();
         int cols = grid.getCols();
         for(int i=-1; i<rows; i++){
@@ -60,17 +82,17 @@ public class Console {
         }
     }
     
-    public static String getInstructions(){
+    public String getInstructions(){
         System.out.println("What is your instruction?");
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
     
-    public static String getInitialisation(){
+    public String getInitialisation(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("How much columns?");
-        String str = sc.nextLine() + " ";
         System.out.println("How much rows?");
+        String str = sc.nextLine() + " ";
+        System.out.println("How much columns?");
         str += sc.nextLine() + " ";
         System.out.println("What percent of mines?");
         str += sc.nextLine();

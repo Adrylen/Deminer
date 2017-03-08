@@ -8,56 +8,108 @@
 
 package org.game.controller;
 
-class GameController {
-	private static boolean quitGame = false;
+import org.game.models.GameGrid;
 
-	private static boolean isInput(String command) {
+import java.util.Observable;
+
+class GameController extends Observable {
+	private String[] args;
+	private int[] inits;
+	private boolean quitGame = false;
+
+	public GameController() {
+		this.inits = new int[3];
+	}
+
+	private boolean isInput(String command) {
 		return command.length() > 0;
 	}
 
-	private static boolean isShowCommand(String command) {
-		String[] args = command.split(" ");
-		return args.length == 3 && args[0] == "d";
+	private boolean isShowCommand() {
+		return this.args.length == 3 && this.args[0].equals("d");
 	}
 
-	private static boolean isMarkCommand(String command) {
-		String[] args = command.split(" ");
-		return args.length == 4 && args[0] == "m";
+	private boolean isMarkCommand() {
+		return this.args.length == 4 && this.args[0].equals("m");
 	}
 
-	private static boolean isOtherCommand(String command) {
-		return command.equals("q");
+	private boolean isOtherCommand(String command) {
+		if(command.equals("q")) {
+			this.quitGame = true;
+		} else if(command.equals("x")) {
+			setChanged();
+			notifyObservers();
+		} else {
+			return false;
+		}
+		return true;
 	}
 
-	private static void updateModel(String command, boolean b) {
+	public boolean gameIsClosed() {
+		return this.quitGame;
+	}
+
+	private void updateModel(GameGrid gameModel, boolean show) {
 		try {
-			if (b) {
-
+			if(show) {
+				gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).show();
 			} else {
-
+				if(this.args[3].equals("x")) {
+					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).markAsMined();
+				} else if(this.args[3].equals("?")) {
+					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).markAsIndeterminate();
+				} else if(this.args[3].equals("#")) {
+					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).unmark();
+				} else {
+					System.out.println("This symbol is not supported.");
+					return;
+				}
 			}
+			setChanged();
+			notifyObservers(gameModel);
 		} catch(NumberFormatException e) {
 			System.out.println("Problème");
 		}
 	}
 
-	private static void quitGameCommand() {
-		GameController.quitGame = true;
-	}
-
-	public static boolean gameIsClosed() {
-		return GameController.quitGame;
-	}
-
-	public static void manageInput(String command) {
+	public void manageInput(GameGrid gameModel, String command) {
 		if(isInput(command)) {
-			if(isShowCommand(command)) {
-				updateModel(command, true);
-			} else if(isMarkCommand(command)) {
-				updateModel(command, false);
+			this.args = command.split(" ");
+			if(isShowCommand()) {
+				updateModel(gameModel, true);
+			} else if(isMarkCommand()) {
+				updateModel(gameModel, false);
 			} else if(isOtherCommand(command)) {
-				quitGameCommand();
+				return;
+			} else {
+				System.out.println("Unknown or invalid command...");
+				System.out.println(" => d i j   | Show a case at (i,j) position");
+				System.out.println(" => m i j s | Mark a case at (i,j) position");
+				System.out.println(" => q       | Quit the game");
+				System.out.println(" => x       | Toggle debug mode");
 			}
 		}
+	}
+
+	public int[] getInits() {
+		return this.inits;
+	}
+
+	public boolean manageInit(String str) {
+		this.args = str.split(" ");
+		if(this.args.length == 3) {
+			try {
+				for(int i = 0; i < inits.length; i++) {
+					inits[i] = Integer.parseInt(this.args[i]);
+				}
+			} catch(NumberFormatException e) {
+				System.out.println("Need integer inputs...");
+				return false;
+			}
+		} else {
+			System.out.println("Need three inputs...");
+			return false;
+		}
+		return true;
 	}
 }
