@@ -5,6 +5,8 @@
  */
 package org.main;
 
+import org.game.controller.Deminer;
+
 public class Main {
 	public static void main(String[] args) {
 	    //new Deminer().run();

@@ -19,6 +19,18 @@ public class GameGrid {
 		this.grid = new Case[rows][cols];
 	}
 
+	public int getRows() {
+		return this.grid.length;
+	}
+
+	public int getCols() {
+		return this.grid[0].length;
+	}
+
+	public int getSize() {
+		return this.grid.length * this.grid[0].length;
+	}
+
 	public Case[][] getGrid() {
 		return this.grid;
 	}
