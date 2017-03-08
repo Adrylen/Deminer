@@ -18,10 +18,17 @@ public class Console {
     public static void display(GameGrid grid){
         int rows = grid.getRows();
         int cols = grid.getCols();
-        for(int i=0; i<rows; i++){
-            for(int j=0; i<cols; j++){
-                System.out.print(grid[i][j].)
+        for(int i=-1; i<rows; i++){
+            for(int j=-1; j<cols; j++){
+                if(i==-1){
+                    System.out.print(j);
+                }else if(j==-1 && i!=-1){
+                    System.out.print(i);
+                }else{
+                    System.out.print(grid.getCase(i, j).getSymbol());
+                }
             }
+            System.out.println("");
         }
     }
     
