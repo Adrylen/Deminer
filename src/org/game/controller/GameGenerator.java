@@ -12,36 +12,36 @@ import org.game.models.GameGrid;
 
 import java.util.Random;
 
-public class GameGenerator {
-	private final int MIN_ROWS = 10;
-	private final int MIN_COLS = 10;
-	private final int MIN_PERCENT = 10;
-	private GameGrid grid;
+class GameGenerator {
+	private static final int MIN_ROWS = 10;
+	private static final int MIN_COLS = 10;
+	private static final int MIN_PERCENT = 10;
+	private static GameGrid grid;
 
-	private void addNeighbors(int i, int j) {
+	private static void addNeighbors(int i, int j) {
 		for(int a = i-1; a <= i+1; a++) {
-			if(a < 0 || a >= this.grid.getRows()) {
+			if(a < 0 || a >= grid.getRows()) {
 				continue;
 			}
 			for(int b = j-1; b <= j+1; b++) {
-				if(b < 0 || b >= this.grid.getCols()) {
+				if(b < 0 || b >= grid.getCols()) {
 					continue;
 				}
-				this.grid.getCase(a,b).addNeighbor();
+				grid.getCase(a,b).addNeighbor();
 			}
 		}
 	}
 
-	private void randomize(int percent) {
-		int buffer = (int)(this.grid.getSize() * percent / 100.0);
+	private static void randomize(int percent) {
+		int buffer = (int)(grid.getSize() * percent / 100.0);
 
 		while(buffer > 0) {
-			for(int i = 0; i < this.grid.getRows(); i++) {
-				for(int j = 0; j < this.grid.getCols(); i++) {
+			for(int i = 0; i < grid.getRows(); i++) {
+				for(int j = 0; j < grid.getCols(); i++) {
 					if(new Random().nextInt(100) < percent) {
-						this.grid.getCase(i,j).mine();
-						this.grid.getCase(i,j).setNeighbors(0);
-						this.addNeighbors(i,j);
+						grid.getCase(i,j).mine();
+						grid.getCase(i,j).setNeighbors(0);
+						addNeighbors(i,j);
 					}
 					if(buffer == 0) {
 						return;
@@ -51,13 +51,13 @@ public class GameGenerator {
 		}
 	}
 
-	public GameGrid generate(int rows, int cols, int percent) {
-		this.grid = new GameGrid(rows, cols);
-		this.randomize(percent);
-		return this.grid;
+	public static GameGrid generate(int rows, int cols, int percent) {
+		grid = new GameGrid(rows, cols);
+		randomize(percent);
+		return grid;
 	}
 
-	public GameGrid generate() {
-		return this.generate(MIN_ROWS, MIN_COLS, MIN_PERCENT);
+	public static GameGrid generate() {
+		return generate(MIN_ROWS, MIN_COLS, MIN_PERCENT);
 	}
 }
