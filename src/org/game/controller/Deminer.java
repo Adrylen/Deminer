@@ -9,6 +9,7 @@
 package org.game.controller;
 
 import org.game.models.GameGrid;
+import org.game.vue.Console;
 
 public class Deminer {
 	private GameGrid gameModel;
@@ -28,7 +29,7 @@ public class Deminer {
 	}
 
 	public void render() {
-
+		Console.display(this.gameModel);
 	}
 
 	public void close() {
@@ -41,6 +42,6 @@ public class Deminer {
 			render();
 			update();
 		} while(!this.end);
-		close();
+//		close();
 	}
 }
