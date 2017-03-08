@@ -13,10 +13,11 @@ public class GameGrid {
 
 	public GameGrid(int rows, int cols) {
 		this.grid = new Case[rows][cols];
-	}
-
-	public void setGrid(int rows, int cols) {
-		this.grid = new Case[rows][cols];
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < cols; j++) {
+				this.grid[i][j] = new Case();
+			}
+		}
 	}
 
 	public int getRows() {
