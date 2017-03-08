@@ -23,7 +23,7 @@ public class Deminer {
 	}
 
 	public void update() {
-		//GameController.manageInput("");
+		GameController.manageInput("d");
 
 		this.end = true;
 	}
