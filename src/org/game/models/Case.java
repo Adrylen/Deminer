@@ -60,8 +60,8 @@ public class Case {
 		this.neighbors++;
 	}
 
-	public void setNeighbors(int neighbors) {
-		this.neighbors = neighbors;
+	public void resetNeighbors() {
+		this.neighbors = 0;
 	}
 
 	public void setSymbol(char symbol) {

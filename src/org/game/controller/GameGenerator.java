@@ -35,7 +35,7 @@ class GameGenerator {
 				for(int j = 0; j < grid.getCols(); j++) {
 					if(new Random().nextInt(100) < percent) {
 						grid.getCase(i,j).mine();
-						grid.getCase(i,j).setNeighbors(0);
+						grid.getCase(i,j).resetNeighbors();
 						addNeighbors(grid,i,j);
 						buffer--;
 					}

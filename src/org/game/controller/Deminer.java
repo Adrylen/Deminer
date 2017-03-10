@@ -16,7 +16,6 @@ public class Deminer {
 	private GameGrid gameModel;
 	private GameController controls;
 
-	private boolean debugMode;
 	private boolean end;
 
 	public Deminer() {
