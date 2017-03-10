@@ -30,19 +30,20 @@ public class Deminer {
 		String inits = "";
 		do {
 			inits = this.console.getInitialisation();
-		} while(!this.controls.manageInit(inits));
+		} while(!this.controls.manageInit(this.gameModel, inits));
 
-		this.gameModel = GameGenerator.generate(this.controls.getInits());
+		this.gameModel = new GameGrid(this.controls.getInits()[0], this.controls.getInits()[1]);
 		this.console.display(this.gameModel);
 	}
 
 	public void update() {
 		this.controls.manageInput(this.gameModel, this.console.getInstructions());
-		this.end = controls.gameIsClosed();
+		this.controls.checkVictory(this.gameModel);
+		this.end = this.controls.gameIsClosed() || this.controls.isLoose() || this.controls.isWin();
 	}
 
 	public void close() {
-		this.console.display(this.gameModel);
+		this.console.displayBug(this.gameModel);
 	}
 
 	public void run() {
@@ -50,6 +51,6 @@ public class Deminer {
 		do {
 			update();
 		} while(!this.end);
-//		close();
+		close();
 	}
 }

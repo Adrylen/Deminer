@@ -30,6 +30,8 @@ public class Console implements Observer {
 				} else {
 					this.displayBug((GameGrid) obj);
 				}
+			} else if(obj instanceof String) {
+				System.out.println(obj.toString());
 			} else {
 				this.debugMode = !this.debugMode;
 			}

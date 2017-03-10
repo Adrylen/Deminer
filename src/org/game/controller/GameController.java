@@ -8,6 +8,7 @@
 
 package org.game.controller;
 
+import org.game.models.Case;
 import org.game.models.GameGrid;
 
 import java.util.Observable;
@@ -15,6 +16,9 @@ import java.util.Observable;
 class GameController extends Observable {
 	private String[] args;
 	private int[] inits;
+	private boolean firstTurn = true;
+	private boolean win = false;
+	private boolean loose = false;
 	private boolean quitGame = false;
 
 	public GameController() {
@@ -49,10 +53,32 @@ class GameController extends Observable {
 		return this.quitGame;
 	}
 
+	private void show(GameGrid gameModel, int i, int j) {
+		if(this.firstTurn) {
+			GameGenerator.randomize(gameModel, this.inits[2]);
+			this.firstTurn = false;
+		}
+		if(gameModel.getCase(i,j).isHidden()) {
+			gameModel.getCase(i,j).show();
+			if(!gameModel.getCase(i,j).hasNeighbors()) {
+				int iMin = (i == 0) ? i : i-1,
+					jMin = (j == 0) ? j : j-1,
+					iMax = (i == gameModel.getRows()-1) ? i : i+1,
+					jMax = (j == gameModel.getCols()-1) ? j : j+1;
+				for(int a = iMin; a <= iMax; a++) {
+					for (int b = jMin; b <= jMax; b++) {
+						this.show(gameModel, a, b);
+					}
+				}
+			}
+		}
+	}
+
 	private void updateModel(GameGrid gameModel, boolean show) {
 		try {
 			if(show) {
-				gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).show();
+				this.show(gameModel, Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2]));
+//				gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).show();
 			} else {
 				if(this.args[3].equals("x")) {
 					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).markAsMined();
@@ -95,13 +121,16 @@ class GameController extends Observable {
 		return this.inits;
 	}
 
-	public boolean manageInit(String str) {
+	public boolean manageInit(GameGrid gameGrid, String str) {
 		this.args = str.split(" ");
 		if(this.args.length == 3) {
 			try {
-				for(int i = 0; i < inits.length; i++) {
-					inits[i] = Integer.parseInt(this.args[i]);
-				}
+				int init0 = Integer.parseInt(this.args[0]),
+					init1 = Integer.parseInt(this.args[1]),
+					init2 = Integer.parseInt(this.args[2]);
+				inits[0] = (init0 <= 100) ? (init0 >= 10) ? init0 : 10 : 100;
+				inits[1] = (init1 <= 100) ? (init1 >= 10) ? init1 : 10 : 100;
+				inits[2] = (init2 <= 85) ? (init2 >= 10) ? init2 : 10 : 85;
 			} catch(NumberFormatException e) {
 				System.out.println("Need integer inputs...");
 				return false;
@@ -111,5 +140,33 @@ class GameController extends Observable {
 			return false;
 		}
 		return true;
+	}
+
+	public void checkVictory(GameGrid gameModel) {
+		for(Case[] row : gameModel.getGrid()) {
+			for(Case gameCase : row) {
+				if(gameCase.isHidden() && gameCase.isMined() && !gameCase.isMarkedAsMined()) {
+					return;
+				} else if(!gameCase.isHidden() && gameCase.isMined()) {
+					this.loose = true;
+					setChanged();
+					notifyObservers("You loose...");
+					return;
+				} else if(gameCase.isHidden() && !gameCase.hasNeighbors()) {
+					return;
+				}
+			}
+		}
+		this.win = true;
+		setChanged();
+		notifyObservers("You WIN !!!");
+	}
+
+	public boolean isLoose() {
+		return this.loose;
+	}
+
+	public boolean isWin() {
+		return this.win;
 	}
 }

@@ -13,10 +13,6 @@ import org.game.models.GameGrid;
 import java.util.Random;
 
 class GameGenerator {
-	private static final int MIN_ROWS = 10;
-	private static final int MIN_COLS = 10;
-	private static final int MIN_PERCENT = 10;
-
 	private static void addNeighbors(GameGrid grid, int i, int j) {
 		for(int a = i-1; a <= i+1; a++) {
 			if(a < 0 || a >= grid.getRows()) {
@@ -31,7 +27,7 @@ class GameGenerator {
 		}
 	}
 
-	private static void randomize(GameGrid grid, int percent) {
+	public static void randomize(GameGrid grid, int percent) {
 		int buffer = (int)(grid.getSize() * percent / 100.0);
 
 		while(buffer > 0) {
@@ -49,19 +45,5 @@ class GameGenerator {
 				}
 			}
 		}
-	}
-
-	public static GameGrid generate(int rows, int cols, int percent) {
-		GameGrid grid = new GameGrid(rows, cols);
-		randomize(grid, percent);
-		return grid;
-	}
-
-	public static GameGrid generate(int[] inits) {
-		return generate(inits[0], inits[1], inits[2]);
-	}
-
-	public static GameGrid generate() {
-		return generate(MIN_ROWS, MIN_COLS, MIN_PERCENT);
 	}
 }
