@@ -6,9 +6,11 @@
 package org.main;
 
 import org.game.controller.Deminer;
+import org.game.graphics.controller.WindowDeminer;
 
 public class Main {
 	public static void main(String[] args) {
-	    new Deminer().run();
+//	    new Deminer().run();
+		new WindowDeminer().test();
     }
 }
