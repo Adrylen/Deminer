@@ -13,49 +13,48 @@ import org.game.models.GameGrid;
 
 import java.util.Observable;
 
-class GameController extends Observable {
-	private String[] args;
-	private int[] inits;
+public class GameController extends Observable {
 	private boolean firstTurn = true;
 	private boolean win = false;
 	private boolean loose = false;
 	private boolean quitGame = false;
 
-	public GameController() {
-		this.inits = new int[3];
-	}
-
-	private boolean isInput(String command) {
-		return command.length() > 0;
-	}
-
-	private boolean isShowCommand() {
-		return this.args.length == 3 && this.args[0].equals("d");
-	}
-
-	private boolean isMarkCommand() {
-		return this.args.length == 4 && this.args[0].equals("m");
-	}
-
-	private boolean isOtherCommand(String command) {
-		if(command.equals("q")) {
-			this.quitGame = true;
-		} else if(command.equals("x")) {
-			setChanged();
-			notifyObservers();
-		} else {
-			return false;
-		}
-		return true;
-	}
-
 	public boolean gameIsClosed() {
 		return this.quitGame;
 	}
 
+	public boolean isLoose() {
+		return this.loose;
+	}
+
+	public boolean isWin() {
+		return this.win;
+	}
+
+	public boolean createGrid(GameGrid gameGrid, String str) {
+		String[] args = str.split(" ");
+		setChanged();
+		if(args.length == 3) {
+			try {
+				int rows = InputController.getInit(args[0], 10, 100);
+				int cols = InputController.getInit(args[1], 10, 100);
+				int percent = InputController.getInit(args[2], 10, 85);
+				gameGrid.setGrid(rows, cols).setPercent(percent);
+				notifyObservers(gameGrid);
+				return true;
+			} catch(NumberFormatException e) {
+				notifyObservers("Need integer inputs...");
+				return false;
+			}
+		} else {
+			notifyObservers("Need three inputs...");
+			return false;
+		}
+	}
+
 	private void show(GameGrid gameModel, int i, int j) {
 		if(this.firstTurn) {
-			GameGenerator.randomize(gameModel, this.inits[2]);
+			GameGenerator.randomize(gameModel, i, j);
 			this.firstTurn = false;
 		}
 		if(gameModel.getCase(i,j).isHidden()) {
@@ -74,99 +73,79 @@ class GameController extends Observable {
 		}
 	}
 
-	private void updateModel(GameGrid gameModel, boolean show) {
+	private void updateModel(GameGrid gameModel, String[] args, boolean show) {
+		int i, j;
+		setChanged();
 		try {
-			if(show) {
-				this.show(gameModel, Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2]));
-//				gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).show();
-			} else {
-				if(this.args[3].equals("x")) {
-					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).markAsMined();
-				} else if(this.args[3].equals("?")) {
-					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).markAsIndeterminate();
-				} else if(this.args[3].equals("#")) {
-					gameModel.getCase(Integer.parseInt(this.args[1]), Integer.parseInt(this.args[2])).unmark();
-				} else {
-					System.out.println("This symbol is not supported.");
-					return;
-				}
-			}
-			setChanged();
-			notifyObservers(gameModel);
+			i = Integer.parseInt(args[1]);
+			j = Integer.parseInt(args[2]);
 		} catch(NumberFormatException e) {
-			System.out.println("Problème");
+			notifyObservers("Second and third arguments must be integers...");
+			return;
+		}
+		if(show) {
+			this.show(gameModel, i, j);
+		} else {
+			switch(args[3]) {
+				case "x": gameModel.getCase(i,j).markAsMined();         break;
+				case "?": gameModel.getCase(i,j).markAsIndeterminate(); break;
+				case "#": gameModel.getCase(i,j).unmark();              break;
+				default :
+					notifyObservers("This symbol is not supported.");
+					return;
+			}
+		}
+		notifyObservers(gameModel);
+	}
+
+	private void manageOtherCommand(String command) {
+		if(command.equals("q")) {
+			this.quitGame = true;
+		} else if(command.equals("x")) {
+			setChanged();
+			notifyObservers();
 		}
 	}
 
 	public void manageInput(GameGrid gameModel, String command) {
-		if(isInput(command)) {
-			this.args = command.split(" ");
-			if(isShowCommand()) {
-				updateModel(gameModel, true);
-			} else if(isMarkCommand()) {
-				updateModel(gameModel, false);
-			} else if(isOtherCommand(command)) {
-				return;
+		InputController in = new InputController();
+		if(in.isInput(command)) {
+			String[] args = command.split(" ");
+			if(in.isShowCommand(args)) {
+				updateModel(gameModel, args, true);
+			} else if(in.isMarkCommand(args)) {
+				updateModel(gameModel, args, false);
+			} else if(in.isOtherCommand(command)) {
+				manageOtherCommand(command);
 			} else {
-				System.out.println("Unknown or invalid command...");
-				System.out.println(" => d i j   | Show a case at (i,j) position");
-				System.out.println(" => m i j s | Mark a case at (i,j) position");
-				System.out.println(" => q       | Quit the game");
-				System.out.println(" => x       | Toggle debug mode");
+				setChanged();
+				notifyObservers("Unknown or invalid command...\n"+
+					" => d i j   | Show a case at (i,j) position\n"+
+					" => m i j s | Mark a case at (i,j) position\n"+
+					" => q       | Quit the game\n"+
+					" => x       | Toggle debug mode"
+				);
 			}
 		}
-	}
-
-	public int[] getInits() {
-		return this.inits;
-	}
-
-	public boolean manageInit(GameGrid gameGrid, String str) {
-		this.args = str.split(" ");
-		if(this.args.length == 3) {
-			try {
-				int init0 = Integer.parseInt(this.args[0]),
-					init1 = Integer.parseInt(this.args[1]),
-					init2 = Integer.parseInt(this.args[2]);
-				inits[0] = (init0 <= 100) ? (init0 >= 10) ? init0 : 10 : 100;
-				inits[1] = (init1 <= 100) ? (init1 >= 10) ? init1 : 10 : 100;
-				inits[2] = (init2 <= 85) ? (init2 >= 10) ? init2 : 10 : 85;
-			} catch(NumberFormatException e) {
-				System.out.println("Need integer inputs...");
-				return false;
-			}
-		} else {
-			System.out.println("Need three inputs...");
-			return false;
-		}
-		return true;
 	}
 
 	public void checkVictory(GameGrid gameModel) {
 		for(Case[] row : gameModel.getGrid()) {
 			for(Case gameCase : row) {
-				if(gameCase.isHidden() && gameCase.isMined() && !gameCase.isMarkedAsMined()) {
+				if(gameCase.isHidden()) {
 					return;
-				} else if(!gameCase.isHidden() && gameCase.isMined()) {
-					this.loose = true;
-					setChanged();
-					notifyObservers("You loose...");
-					return;
-				} else if(gameCase.isHidden() && !gameCase.hasNeighbors()) {
-					return;
+				} else {
+					if(gameCase.isMined()) {
+						this.loose = true;
+						setChanged();
+						notifyObservers("You loose...");
+						return;
+					}
 				}
 			}
 		}
 		this.win = true;
 		setChanged();
 		notifyObservers("You WIN !!!");
-	}
-
-	public boolean isLoose() {
-		return this.loose;
-	}
-
-	public boolean isWin() {
-		return this.win;
 	}
 }

@@ -6,8 +6,9 @@
     Created by adrylen on 08/03/17.
 */
 
-package org.game.controller;
+package org.game.engine;
 
+import org.game.controller.GameController;
 import org.game.models.GameGrid;
 import org.game.vue.Console;
 
@@ -19,33 +20,31 @@ public class Deminer {
 	private boolean end;
 
 	public Deminer() {
+		this.gameModel = new GameGrid();
 		this.controls = new GameController();
 		this.console = new Console(this.controls);
 		this.controls.addObserver(this.console);
 		this.end = false;
 	}
 
-	public void init() {
-		String inits = "";
+	private void init() {
+		StringBuilder inits = new StringBuilder();
 		do {
-			inits = this.console.getInitialisation();
-		} while(!this.controls.manageInit(this.gameModel, inits));
-
-		this.gameModel = new GameGrid(this.controls.getInits()[0], this.controls.getInits()[1]);
-		this.console.display(this.gameModel);
+			inits.delete(0,inits.length()).append(this.console.getInitialisation());
+		} while(!this.controls.createGrid(this.gameModel, inits.toString()));
 	}
 
-	public void update() {
+	private void update() {
 		this.controls.manageInput(this.gameModel, this.console.getInstructions());
 		this.controls.checkVictory(this.gameModel);
 		this.end = this.controls.gameIsClosed() || this.controls.isLoose() || this.controls.isWin();
 	}
 
-	public void close() {
+	private void close() {
 		this.console.displayBug(this.gameModel);
 	}
 
-	public void run() {
+	public void launch() {
 		init();
 		do {
 			update();

@@ -9,7 +9,7 @@
 package org.game.graphics.controller;
 
 public class WindowDeminer {
-	public void run() {
+	public void launch() {
 
 	}
 
