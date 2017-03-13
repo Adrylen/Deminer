@@ -38,7 +38,7 @@ public class Console implements Observer {
 		}
 	}
     
-    public void display(GameGrid grid){
+    private void display(GameGrid grid){
         int rows = grid.getRows();
         int cols = grid.getCols();
         for(int i=-1; i<rows; i++){
@@ -49,7 +49,7 @@ public class Console implements Observer {
                     }else{
                         System.out.printf("%3d",j);                        
                     }
-                }else if(j==-1 && i!=-1){
+                }else if(j==-1) {
                     System.out.printf("%3d",i);
                 }else{
                     System.out.printf("%3c",grid.getCase(i, j).getSymbol());
@@ -70,7 +70,7 @@ public class Console implements Observer {
                     }else{
                         System.out.printf("%3d",j);                       
                     }
-                }else if(j==-1 && i!=-1){
+                }else if(j==-1){
                     System.out.printf("%3d",i);
                 }else{
                     if(!grid.getCase(i, j).isMined()){

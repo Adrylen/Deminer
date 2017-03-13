@@ -13,7 +13,7 @@ import org.game.graphics.view.Window;
 
 
 public class WindowDeminer {
-	public void run() {
+	public void launch() {
 
 	}
 

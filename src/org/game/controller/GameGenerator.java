@@ -27,15 +27,17 @@ class GameGenerator {
 		}
 	}
 
-	public static void randomize(GameGrid grid, int percent) {
-		int buffer = (int)(grid.getSize() * percent / 100.0);
+	static void randomize(GameGrid grid, int x, int y) {
+		int buffer = (int)(grid.getSize() * grid.getPercent() / 100.0);
 
 		while(buffer > 0) {
 			for(int i = 0; i < grid.getRows(); i++) {
 				for(int j = 0; j < grid.getCols(); j++) {
-					if(new Random().nextInt(100) < percent) {
-						grid.getCase(i,j).mine();
-						grid.getCase(i,j).resetNeighbors();
+					if(i == x && j == y) {
+						continue;
+					}
+					if(new Random().nextInt(100) < grid.getPercent()) {
+						grid.getCase(i,j).mine().resetNeighbors();
 						addNeighbors(grid,i,j);
 						buffer--;
 					}
