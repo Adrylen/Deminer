@@ -8,6 +8,7 @@ package org.game.vue;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.game.models.Case;
 import org.game.models.GameGrid;
 
 /**
@@ -22,8 +23,8 @@ public class GraphicalGridView extends JPanel{
         this.setLayout(new GridLayout(rows, cols, 0, 0));
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                char symbol=grid.getCase(i, j).getSymbol();
-                this.add(new GraphicalCellView(symbol));
+                Case gameCase=grid.getCase(i, j);
+                this.add(new GraphicalCellView(gameCase));
             }
         }
     }

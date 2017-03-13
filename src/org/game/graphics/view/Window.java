@@ -25,7 +25,7 @@ public class Window extends JFrame{
     
     
     public void main(){
-        GameGrid grid = new GameGrid(10,10);
+        GameGrid grid = new GameGrid().setGrid(10, 10);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500,500);
         this.setLayout(new BorderLayout(5, 5));

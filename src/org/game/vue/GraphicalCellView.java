@@ -5,15 +5,20 @@
  */
 package org.game.vue;
 
+import java.awt.Font;
 import javax.swing.JButton;
+import org.game.models.Case;
 
 /**
  *
  * @author kieffersarah
  */
 public class GraphicalCellView extends JButton{
+    
+    private Case gameCase;
 
-    public GraphicalCellView(char symbol){
-        super(new StringBuilder().append(symbol).toString());
+    public GraphicalCellView(Case gameCase){
+        super();
+        this.gameCase=gameCase;
     }
 }
