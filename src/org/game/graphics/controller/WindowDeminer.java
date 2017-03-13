@@ -8,12 +8,16 @@
 
 package org.game.graphics.controller;
 
+import org.game.graphics.view.Window;
+
+
+
 public class WindowDeminer {
 	public void launch() {
 
 	}
 
 	public void test() {
-
+            new Window("Deminer").main();
 	}
 }
