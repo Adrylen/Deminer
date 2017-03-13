@@ -21,22 +21,23 @@ public class Deminer {
 
 	public Deminer() {
 		this.gameModel = new GameGrid();
-		this.controls = new GameController();
-		this.view = new Console(this.controls);
-		this.controls.addObserver(this.view);
+		this.controls = new GameController(this.gameModel);
+		this.view = new Console(this.gameModel);
+		this.gameModel.addObserver(this.view);
 		this.end = false;
 	}
 
 	private void init() {
 		StringBuilder inits = new StringBuilder();
 		do {
-			inits.delete(0,inits.length()).append(this.view.getInitialisation());
-		} while(!this.controls.createGrid(this.gameModel, inits.toString()));
+			inits.delete(0,inits.length())
+				.append(this.view.getInitialisation());
+		} while(!this.controls.createGrid(inits.toString()));
 	}
 
 	private void update() {
-		this.controls.manageInput(this.gameModel, this.view.getInstructions());
-		this.controls.checkVictory(this.gameModel);
+		this.controls.manageInput(this.view.getInstructions());
+		this.controls.checkVictory();
 		this.end = this.controls.gameIsClosed() || this.controls.isLoose() || this.controls.isWin();
 	}
 

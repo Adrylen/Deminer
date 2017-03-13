@@ -5,23 +5,26 @@
  */
 package org.game.vue;
 
+import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.game.models.Case;
+
 
 /**
  *
  * @author kieffersarah
  */
-public class GraphicalCellView extends JButton implements ActionListener {
+public class GraphicalCellView extends JButton {
+    private Case gameCase;
 
-    public GraphicalCellView(char symbol){
-        super(new StringBuilder().append(symbol).toString());
-        addActionListener(this);
+    public GraphicalCellView(Case gameCase){
+        super();
+        this.gameCase = gameCase;
     }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Yup");
-	}
+    public Case getCase() {
+    	return this.gameCase;
+    }
 }

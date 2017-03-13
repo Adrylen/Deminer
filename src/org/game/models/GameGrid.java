@@ -8,7 +8,9 @@
 
 package org.game.models;
 
-public class GameGrid {
+import java.util.Observable;
+
+public class GameGrid extends Observable {
 	private Case grid[][];
 	private int percent;
 
@@ -61,5 +63,15 @@ public class GameGrid {
 			}
 		}
 		return number;
+	}
+
+	public void toggleDebug() {
+		setChanged();
+		notifyObservers(true);
+	}
+
+	public void update() {
+		setChanged();
+		notifyObservers(this);
 	}
 }

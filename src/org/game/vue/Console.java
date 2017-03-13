@@ -15,15 +15,15 @@ import org.game.models.GameGrid;
  * @author kieffersarah
  */
 public class Console implements Observer {
-	private Observable control = null;
+	private Observable model = null;
 	private boolean debugMode = false;
 
-	public Console(Observable control) {
-		this.control = control;
+	public Console(Observable model) {
+		this.model = model;
 	}
 
 	public void update(Observable obs, Object obj) {
-		if(this.control == obs) {
+		if(this.model == obs) {
 			if(obj instanceof GameGrid) {
 				if (!this.debugMode) {
 					this.display((GameGrid) obj);
@@ -32,7 +32,7 @@ public class Console implements Observer {
 				}
 			} else if(obj instanceof String) {
 				System.out.println(obj.toString());
-			} else {
+			} else if(obj instanceof Boolean){
 				this.debugMode = !this.debugMode;
 			}
 		}

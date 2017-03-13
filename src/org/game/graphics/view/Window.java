@@ -27,7 +27,7 @@ public class Window extends JFrame implements Observer {
 
 
     public void main(){
-        GameGrid grid = new GameGrid().setGrid(10,10);
+        GameGrid grid = new GameGrid().setGrid(10, 10);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500,500);
         this.setLayout(new BorderLayout(5, 5));
@@ -38,7 +38,7 @@ public class Window extends JFrame implements Observer {
         this.add(new JButton("West"), BorderLayout.WEST);
         this.setVisible(true);
 
-		System.out.println(this.getPanel().getButton(5, 5));
+		System.out.println(this.getPanel().getButton(5, 5).getCase().getSymbol());
     }
 
     /**
