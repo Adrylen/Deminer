@@ -13,7 +13,7 @@ import org.game.models.GameGrid;
 import org.game.vue.Console;
 
 public class Deminer {
-	private Console console;
+	private Console view;
 	private GameGrid gameModel;
 	private GameController controls;
 
@@ -22,26 +22,26 @@ public class Deminer {
 	public Deminer() {
 		this.gameModel = new GameGrid();
 		this.controls = new GameController();
-		this.console = new Console(this.controls);
-		this.controls.addObserver(this.console);
+		this.view = new Console(this.controls);
+		this.controls.addObserver(this.view);
 		this.end = false;
 	}
 
 	private void init() {
 		StringBuilder inits = new StringBuilder();
 		do {
-			inits.delete(0,inits.length()).append(this.console.getInitialisation());
+			inits.delete(0,inits.length()).append(this.view.getInitialisation());
 		} while(!this.controls.createGrid(this.gameModel, inits.toString()));
 	}
 
 	private void update() {
-		this.controls.manageInput(this.gameModel, this.console.getInstructions());
+		this.controls.manageInput(this.gameModel, this.view.getInstructions());
 		this.controls.checkVictory(this.gameModel);
 		this.end = this.controls.gameIsClosed() || this.controls.isLoose() || this.controls.isWin();
 	}
 
 	private void close() {
-		this.console.displayBug(this.gameModel);
+		this.view.displayBug(this.gameModel);
 	}
 
 	public void launch() {

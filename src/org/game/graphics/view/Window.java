@@ -5,8 +5,10 @@
  */
 package org.game.graphics.view;
 import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.*;
+
 import org.game.models.GameGrid;
 import org.game.vue.GraphicalGridView;
         
@@ -15,17 +17,17 @@ import org.game.vue.GraphicalGridView;
  *
  * @author kieffersarah
  */
-public class Window extends JFrame{
+public class Window extends JFrame implements Observer {
     private int sizeX = 300;
     private int sizeY = 400;
     
     public Window(String str){
         super(str);
     }
-    
-    
+
+
     public void main(){
-        GameGrid grid = new GameGrid(10,10);
+        GameGrid grid = new GameGrid().setGrid(10,10);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500,500);
         this.setLayout(new BorderLayout(5, 5));
@@ -36,7 +38,8 @@ public class Window extends JFrame{
         this.add(new JButton("West"), BorderLayout.WEST);
         this.setVisible(true);
 
-        }
+		System.out.println(this.getPanel().getButton(5, 5));
+    }
 
     /**
      * @return the sizeX
@@ -65,5 +68,12 @@ public class Window extends JFrame{
     public void setSizeY(int sizeY) {
         this.sizeY = sizeY;
     }
-    
+
+    public GraphicalGridView getPanel() {
+	    return (GraphicalGridView) this.getContentPane().getComponent(0);
+    }
+
+	@Override
+	public void update(Observable obs, Object obj) {
+	}
 }

@@ -6,8 +6,8 @@
 package org.game.vue;
 
 import java.awt.GridLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import org.game.models.GameGrid;
 
 /**
@@ -26,5 +26,9 @@ public class GraphicalGridView extends JPanel{
                 this.add(new GraphicalCellView(symbol));
             }
         }
+    }
+
+    public GraphicalCellView getButton(int i, int j) {
+		return (GraphicalCellView) this.getComponent(10*i + j);
     }
 }

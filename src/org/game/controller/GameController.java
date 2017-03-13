@@ -60,19 +60,10 @@ public class GameController extends Observable {
 		if(gameModel.getCase(i,j).isHidden()) {
 			gameModel.getCase(i,j).show();
 			if(!gameModel.getCase(i,j).hasNeighbors()) {
-//				int iMin = (i == 0) ? i : i-1,
-//					jMin = (j == 0) ? j : j-1,
-//					iMax = (i == gameModel.getRows()-1) ? i : i+1,
-//					jMax = (j == gameModel.getCols()-1) ? j : j+1;
 				this.show(gameModel, (i == 0) ? i : i-1, j);
 				this.show(gameModel, (i == gameModel.getRows()-1) ? i : i+1, j);
 				this.show(gameModel, i, (j == 0) ? j : j-1);
 				this.show(gameModel, i, (j == gameModel.getCols()-1) ? j : j+1);
-//				for(int a = iMin; a <= iMax; a++) {
-//					for (int b = jMin; b <= jMax; b++) {
-//						this.show(gameModel, a, b);
-//					}
-//				}
 			}
 		}
 	}
