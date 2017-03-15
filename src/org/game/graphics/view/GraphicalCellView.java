@@ -9,6 +9,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import org.game.controller.GameController;
 import org.game.graphics.events.MouseEventListener;
 import org.game.models.Case;
 
@@ -21,11 +22,11 @@ public class GraphicalCellView extends JButton {
     private Case gameCase;
     private Icon mine = new ImageIcon("deminer.png");
 
-    public GraphicalCellView(Case gameCase){
+    public GraphicalCellView(Case gameCase, GameController controller){
         super(new StringBuilder().append(gameCase.getSymbol()).toString());
         this.gameCase = gameCase;
         this.changeIcon();
-        this.addMouseListener(new MouseEventListener());
+        this.addMouseListener(new MouseEventListener(controller));
     }
 
     public Case getCase() {
@@ -82,8 +83,6 @@ public class GraphicalCellView extends JButton {
                 this.setText("8");
                 this.setEnabled(false);
                 break;
-            
-                   
         }
     }
 }
