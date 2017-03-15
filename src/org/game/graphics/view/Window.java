@@ -10,7 +10,6 @@ import java.util.Observer;
 import javax.swing.*;
 
 import org.game.models.GameGrid;
-import org.game.vue.GraphicalGridView;
         
 
 /**
@@ -27,16 +26,21 @@ public class Window extends JFrame implements Observer {
 
 
     public void main(){
+
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(new Menu("Game"));
         GameGrid grid = new GameGrid().setGrid(10, 10);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500,500);
         this.setLayout(new BorderLayout(5, 5));
+        
         this.add(new GraphicalGridView(grid), BorderLayout.CENTER);
-        this.add(new JButton("North"), BorderLayout.NORTH);
+        this.add(menuBar, BorderLayout.NORTH);
         this.add(new JButton("South"), BorderLayout.SOUTH);
         this.add(new JButton("East"), BorderLayout.EAST);
         this.add(new JButton("West"), BorderLayout.WEST);
         this.setVisible(true);
+        
     }
 
     /**

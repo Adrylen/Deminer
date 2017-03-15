@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.vue;
+package org.game.graphics.view;
 
+import org.game.graphics.view.GraphicalCellView;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;

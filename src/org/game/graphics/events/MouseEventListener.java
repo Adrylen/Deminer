@@ -8,7 +8,7 @@
 
 package org.game.graphics.events;
 
-import org.game.vue.GraphicalCellView;
+import org.game.graphics.view.GraphicalCellView;
 
 import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
