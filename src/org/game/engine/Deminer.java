@@ -27,8 +27,8 @@ public class Deminer {
 		this.view = new Console(this.gameModel);
 		this.gameModel.addObserver(this.view);
 
-		this.window = new Window("Deminer");
-		this.window.main();
+//		this.window = new Window("Deminer");
+//		this.window.main();
 		this.end = false;
 	}
 

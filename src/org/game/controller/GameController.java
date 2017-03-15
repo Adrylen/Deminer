@@ -19,6 +19,8 @@ public class GameController {
 	private boolean loose = false;
 	private boolean quitGame = false;
 
+	private static boolean newEventHappend = false;
+
 	public GameController(GameGrid gameModel) {
 		this.gameModel = gameModel;
 	}
@@ -70,6 +72,22 @@ public class GameController {
 				this.show(i, (j == this.gameModel.getCols()-1) ? j : j+1);
 			}
 		}
+	}
+
+	public void updateModel(Case gameCase, boolean show) {
+		int[] position = this.gameModel.getCasePosition(gameCase);
+		if(show) {
+			this.show(position[0], position[1]);
+		} else {
+			if(gameCase.isMarkedAsMined()) {
+				gameCase.markAsIndeterminate();
+			} else if(gameCase.isMarkedAsIndeterminate()) {
+				gameCase.unmark();
+			} else {
+				gameCase.markAsMined();
+			}
+		}
+		this.gameModel.update();
 	}
 
 	private void updateModel(String[] args, boolean show) {
@@ -143,5 +161,13 @@ public class GameController {
 		}
 		this.win = true;
 		System.out.println("You WIN !!!");
+	}
+
+	public boolean newEventHappend() {
+		return newEventHappend;
+	}
+
+	public static void setNewEvent() {
+		newEventHappend = true;
 	}
 }

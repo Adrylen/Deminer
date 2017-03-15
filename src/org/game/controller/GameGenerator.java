@@ -12,7 +12,7 @@ import org.game.models.GameGrid;
 
 import java.util.Random;
 
-class GameGenerator {
+public class GameGenerator {
 	private static void addNeighbors(GameGrid grid, int i, int j) {
 		for(int a = i-1; a <= i+1; a++) {
 			if(a < 0 || a >= grid.getRows()) {
@@ -27,8 +27,8 @@ class GameGenerator {
 		}
 	}
 
-	static void randomize(GameGrid grid, int x, int y) {
-		int buffer = (int)(grid.getSize() * grid.getPercent() / 100.0);
+	public static void randomize(GameGrid grid, int x, int y) {
+		int buffer = grid.getMines();
 
 		while(buffer > 0) {
 			for(int i = 0; i < grid.getRows(); i++) {

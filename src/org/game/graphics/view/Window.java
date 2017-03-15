@@ -9,29 +9,44 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
 
+import org.game.controller.GameController;
 import org.game.models.GameGrid;
-import org.game.vue.GraphicalGridView;
-        
+
 
 /**
  *
  * @author kieffersarah
  */
 public class Window extends JFrame implements Observer {
+	private GameController controller;
+	private Observable gameModel;
+
+	private boolean tmpDone = false;
+
     private int sizeX = 300;
     private int sizeY = 400;
-    
-    public Window(String str){
+
+	public Window(String str, int sizeX, int sizeY){
         super(str);
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
     }
 
+    public void setObservable(Observable gameModel) {
+    	this.gameModel = gameModel;
+    }
 
-    public void main(){
-        GameGrid grid = new GameGrid().setGrid(10, 10);
+	public void useController(GameController controller) {
+    	this.controller = controller;
+	}
+
+    public void main() {
+		GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500,500);
+        this.setSize(sizeX,sizeY);
         this.setLayout(new BorderLayout(5, 5));
-        this.add(new GraphicalGridView(grid), BorderLayout.CENTER);
+        this.add(gridView, BorderLayout.CENTER);
         this.add(new JButton("North"), BorderLayout.NORTH);
         this.add(new JButton("South"), BorderLayout.SOUTH);
         this.add(new JButton("East"), BorderLayout.EAST);
@@ -73,5 +88,10 @@ public class Window extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable obs, Object obj) {
+		for(int i = 0; i < ((GameGrid) obj).getRows(); i++){
+			for(int j = 0; j < ((GameGrid) obj).getCols(); j++) {
+    	        this.getPanel().getButton(i,j).changeIcon();
+			}
+		}
 	}
 }

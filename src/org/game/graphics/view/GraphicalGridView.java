@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.vue;
+package org.game.graphics.view;
 
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import org.game.controller.GameController;
 import org.game.models.Case;
 import org.game.models.GameGrid;
 
@@ -18,8 +19,8 @@ import org.game.models.GameGrid;
  */
 public class GraphicalGridView extends JPanel{
 	private GameGrid grid;
-    
-    public GraphicalGridView(GameGrid grid){
+
+    public GraphicalGridView(GameGrid grid, GameController controller){
     	this.grid = grid;
         int rows = grid.getRows();
         int cols = grid.getCols();
@@ -27,7 +28,7 @@ public class GraphicalGridView extends JPanel{
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
                 Case gameCase=grid.getCase(i, j);
-                this.add(new GraphicalCellView(gameCase));
+                this.add(new GraphicalCellView(gameCase, controller));
             }
         }
     }

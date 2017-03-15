@@ -13,6 +13,7 @@ import java.util.Observable;
 public class GameGrid extends Observable {
 	private Case grid[][];
 	private int percent;
+	private int mines;
 
 	public GameGrid setGrid(int rows, int cols) {
 		this.grid = new Case[rows][cols];
@@ -26,6 +27,7 @@ public class GameGrid extends Observable {
 
 	public GameGrid setPercent(int percent) {
 		this.percent = percent;
+		this.mines = (int)(this.getSize() * this.percent / 100.0);
 		return this;
 	}
 
@@ -41,6 +43,10 @@ public class GameGrid extends Observable {
 		return this.percent;
 	}
 
+	public int getMines() {
+		return this.mines;
+	}
+
 	public int getSize() {
 		return this.grid.length * this.grid[0].length;
 	}
@@ -53,16 +59,27 @@ public class GameGrid extends Observable {
 		return this.grid[i][j];
 	}
 
-	public int getNumberUnmarkedMines() {
+	public int[] getCasePosition(Case gameCase) {
+		for(int i = 0; i < this.getRows(); i++) {
+			for(int j = 0; j < this.getCols(); j++) {
+				if(this.grid[i][j] == gameCase) {
+					return new int[] {i,j};
+				}
+			}
+		}
+		return null;
+	}
+
+	public int getNumberOfMines() {
 		int number = 0;
 		for(Case[] row : this.grid) {
 			for(Case gameCase : row) {
-				if(!gameCase.isMarkedAsMined() && !gameCase.isMarkedAsIndeterminate()) {
+				if(gameCase.isMarkedAsMined()) {
 					number++;
 				}
 			}
 		}
-		return number;
+		return this.mines - number;
 	}
 
 	public void toggleDebug() {
@@ -74,4 +91,5 @@ public class GameGrid extends Observable {
 		setChanged();
 		notifyObservers(this);
 	}
+
 }
