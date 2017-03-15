@@ -5,6 +5,7 @@
  */
 package org.game.graphics.view;
 
+import org.game.graphics.view.GraphicalCellView;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;

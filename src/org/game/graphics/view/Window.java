@@ -12,7 +12,6 @@ import javax.swing.*;
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
 
-
 /**
  *
  * @author kieffersarah
@@ -42,15 +41,19 @@ public class Window extends JFrame implements Observer {
 
     public void main() {
 		GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(new Menu("Game"));
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(sizeX,sizeY);
         this.setLayout(new BorderLayout(5, 5));
+
         this.add(gridView, BorderLayout.CENTER);
-        this.add(new JButton("North"), BorderLayout.NORTH);
+        this.add(menuBar, BorderLayout.NORTH);
         this.add(new JButton("South"), BorderLayout.SOUTH);
         this.add(new JButton("East"), BorderLayout.EAST);
         this.add(new JButton("West"), BorderLayout.WEST);
+
         this.setVisible(true);
     }
 
