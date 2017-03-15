@@ -8,16 +8,23 @@
 
 package org.game.graphics.controller;
 
+import org.game.controller.GameController;
 import org.game.graphics.view.Window;
-
-
+import org.game.models.GameGrid;
 
 public class WindowDeminer {
-	public void launch() {
+	private GameController controller;
+	private GameGrid gameModel;
+	private Window window;
 
+	public WindowDeminer() {
+		this.window = new Window("Deminer");
+		this.gameModel = new GameGrid();
+		this.controller = new GameController(this.gameModel);
+		this.window.main();
 	}
 
-	public void test() {
-            new Window("Deminer").main();
+	public void launch() {
+
 	}
 }

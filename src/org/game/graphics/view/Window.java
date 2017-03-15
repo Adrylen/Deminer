@@ -37,8 +37,6 @@ public class Window extends JFrame implements Observer {
         this.add(new JButton("East"), BorderLayout.EAST);
         this.add(new JButton("West"), BorderLayout.WEST);
         this.setVisible(true);
-
-		System.out.println(this.getPanel().getButton(5, 5).getCase().getSymbol());
     }
 
     /**

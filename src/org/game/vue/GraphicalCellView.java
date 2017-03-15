@@ -5,10 +5,9 @@
  */
 package org.game.vue;
 
-import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import org.game.graphics.events.MouseEventListener;
 import org.game.models.Case;
 
 
@@ -22,6 +21,7 @@ public class GraphicalCellView extends JButton {
     public GraphicalCellView(Case gameCase){
         super();
         this.gameCase = gameCase;
+        this.addMouseListener(new MouseEventListener());
     }
 
     public Case getCase() {
