@@ -63,13 +63,59 @@ public class GameController {
 			GameGenerator.randomize(this.gameModel, i, j);
 			this.firstTurn = false;
 		}
-		if(this.gameModel.getCase(i,j).isHidden()) {
-			this.gameModel.getCase(i,j).show();
-			if(!this.gameModel.getCase(i,j).hasNeighbors()) {
+		Case gameCase = this.gameModel.getCase(i,j);
+		if(gameCase.isHidden()) {
+			gameCase.show();
+			if(!gameCase.hasNeighbors() && !gameCase.isMined()) {
 				this.show((i == 0) ? i : i-1, j);
 				this.show((i == this.gameModel.getRows()-1) ? i : i+1, j);
 				this.show(i, (j == 0) ? j : j-1);
 				this.show(i, (j == this.gameModel.getCols()-1) ? j : j+1);
+			}
+		}
+	}
+
+	public void showNeighbors(Case gameCase) {
+		if(!gameCase.isMined()) {
+			int[] position = this.gameModel.getCasePosition(gameCase);
+			int mines = 0;
+			for(int a = position[0]-1; a <= position[0]+1; a++) {
+				if(!(a < 0 || a >= this.gameModel.getRows())) {
+					for(int b = position[1]-1; b <= position[1]+1; b++) {
+						if(!(b < 0 || b >= this.gameModel.getCols()) && !(a == position[0] && b == position[1])) {
+							if(this.gameModel.getCase(a,b).isMarkedAsMined()) {
+								mines++;
+							}
+						}
+					}
+				}
+			}
+			if(mines == gameCase.getNeighbors()) {
+				for(int a = position[0]-1; a <= position[0]+1; a++) {
+					if(!(a < 0 || a >= this.gameModel.getRows())) {
+						for(int b = position[1]-1; b <= position[1]+1; b++) {
+							if(!(b < 0 || b >= this.gameModel.getCols()) && !(a == position[0] && b == position[1])) {
+								if(!this.gameModel.getCase(a,b).isMarkedAsMined() && this.gameModel.getCase(a,b).isHidden()) {
+									show(a,b);
+								}
+							}
+						}
+					}
+				}
+				checkVictory();
+				this.gameModel.update();
+			}
+		}
+	}
+
+	private void showAll() {
+		for(int i = 0; i < this.gameModel.getRows(); i++) {
+			for(int j = 0; j < this.gameModel.getCols(); j++) {
+				if(this.gameModel.getCase(i,j).isMined() && this.loose) {
+					this.gameModel.getCase(i,j).show();
+				} else if(!this.gameModel.getCase(i,j).isMined() && this.win) {
+					this.gameModel.getCase(i,j).show();
+				}
 			}
 		}
 	}
@@ -87,6 +133,7 @@ public class GameController {
 				gameCase.markAsMined();
 			}
 		}
+		checkVictory();
 		this.gameModel.update();
 	}
 
@@ -144,23 +191,24 @@ public class GameController {
 	}
 
 	public void checkVictory() {
+		this.win = true;
 		for(Case[] row : this.gameModel.getGrid()) {
 			for(Case gameCase : row) {
-				if(gameCase.isHidden()) {
-					if(!gameCase.hasNeighbors() || (gameCase.isMined() && !gameCase.isMarkedAsMined())) {
-						return;
-					}
-				} else {
-					if(gameCase.isMined()) {
+				if(!gameCase.isHidden() && gameCase.isMined()) {
 						this.loose = true;
-						System.out.println("You loose...");
+						showAll();
 						return;
-					}
+				} else if(gameCase.isHidden() && gameCase.isMined() && !gameCase.isMarkedAsMined()) {
+					this.win = false;
+				} else if(gameCase.isHidden() && !gameCase.isMined() &&!gameCase.hasNeighbors()) {
+					this.win = false;
 				}
 			}
 		}
-		this.win = true;
-		System.out.println("You WIN !!!");
+		if(this.win) {
+			showAll();
+//			System.out.println("You WIN !!!");
+		}
 	}
 
 	public boolean newEventHappend() {

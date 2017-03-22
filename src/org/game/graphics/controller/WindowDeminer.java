@@ -30,23 +30,14 @@ public class WindowDeminer {
 		this.gameModel.addObserver(this.console);
 	}
 
-	private void init() {
-		this.gameModel.setGrid(10,10).setPercent(20);
-		GameGenerator.randomize(this.gameModel, 0, 0);
+	public void init() {
+		this.gameModel.setGrid(10,10).setPercent(10);
+		//GameGenerator.randomize(this.gameModel, 0, 0);
 
 		this.window.setObservable(this.gameModel);
 		this.window.useController(this.controller);
 		this.window.main();
 
 		this.gameModel.update();
-	}
-
-	private void loop() {
-
-	}
-
-	public void launch() {
-		init();
-		loop();
 	}
 }

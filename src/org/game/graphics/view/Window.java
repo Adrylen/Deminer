@@ -20,8 +20,6 @@ public class Window extends JFrame implements Observer {
 	private GameController controller;
 	private Observable gameModel;
 
-	private boolean tmpDone = false;
-
     private int sizeX = 300;
     private int sizeY = 400;
 
@@ -95,6 +93,11 @@ public class Window extends JFrame implements Observer {
 			for(int j = 0; j < ((GameGrid) obj).getCols(); j++) {
     	        this.getPanel().getButton(i,j).changeIcon();
 			}
+		}
+		if(this.controller.isLoose()) {
+			System.out.println("LOOSE");
+		} else if(this.controller.isWin()) {
+			System.out.println("WIN");
 		}
 	}
 }

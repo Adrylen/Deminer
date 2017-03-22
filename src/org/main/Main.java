@@ -11,6 +11,6 @@ import org.game.graphics.controller.WindowDeminer;
 public class Main {
 	public static void main(String[] args) {
 //	    new Deminer().launch();
-		new WindowDeminer().launch();
+		new WindowDeminer().init();
     }
 }

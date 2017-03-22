@@ -61,8 +61,8 @@ public class Case {
 		return this;
 	}
 
-	public Case setNeighbors(int neighbors) {
-		this.neighbors = neighbors;
+	public Case addNeighbor() {
+		this.neighbors++;
 		return this;
 	}
 

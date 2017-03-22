@@ -16,7 +16,7 @@ import org.game.models.GameGrid;
  */
 public class Console implements Observer {
 	private Observable model = null;
-	private boolean debugMode = false;
+	private boolean debugMode = true;
 
 	public Console(Observable model) {
 		this.model = model;

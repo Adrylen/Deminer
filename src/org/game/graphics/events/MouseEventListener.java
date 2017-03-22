@@ -12,7 +12,7 @@ import org.game.controller.GameController;
 import org.game.graphics.view.GraphicalCellView;
 import org.game.models.Case;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -25,12 +25,14 @@ public class MouseEventListener extends MouseAdapter {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-//		StringBuilder builder = new StringBuilder();
-//		System.out.println("Case : " + ((GraphicalCellView)e.getSource()).getCase());
-//		System.out.println("Click : " + isLeftMouseButton(e));
-//		System.out.println("Click : " + isRightMouseButton(e));
-		Case gameCase = ((GraphicalCellView) e.getSource()).getCase();
-		boolean show = (SwingUtilities.isLeftMouseButton(e)) ? true : false;
-		this.controller.updateModel(gameCase, show);
+		if(((JButton) e.getSource()).isEnabled()) {
+			boolean show = (SwingUtilities.isLeftMouseButton(e)) ? true : false;
+			this.controller.updateModel(((GraphicalCellView) e.getSource()).getCase(), show);
+		} else {
+			if (e.getClickCount() == 2) {
+				System.out.println("double clicked");
+				this.controller.showNeighbors(((GraphicalCellView) e.getSource()).getCase());
+			}
+		}
 	}
 }
