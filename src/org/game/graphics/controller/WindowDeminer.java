@@ -23,7 +23,7 @@ public class WindowDeminer {
 	public WindowDeminer() {
 		this.gameModel = new GameGrid();
 		this.controller = new GameController(this.gameModel);
-		this.window = new Window("Deminer", 500, 500);
+		this.window = new Window("Deminer", 600, 500);
 		this.console = new Console(this.gameModel);
 
 		this.gameModel.addObserver(this.window);

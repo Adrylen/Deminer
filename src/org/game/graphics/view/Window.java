@@ -40,7 +40,7 @@ public class Window extends JFrame implements Observer {
 	}
 
     public void main() {
-		GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
+	GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(new Menu("Game"));
 

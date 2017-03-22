@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Menu.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/controller/WindowDeminer.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/controller/GameGenerator.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/vue/GraphicalCellView.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/vue/Console.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalCellView.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/models/Case.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/vue/GraphicalGridView.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/models/GameGrid.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalGridView.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Window.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/SubMenu.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/main/Main.java</file>
         </group>
     </open-files>
