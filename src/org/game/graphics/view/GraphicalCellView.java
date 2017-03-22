@@ -53,27 +53,35 @@ public class GraphicalCellView extends JButton {
                 break;
             case '1':
                 this.setText("1");
+                this.setEnabled(false);
                 break;
             case '2':
                 this.setText("2");
+                this.setEnabled(false);
                 break;
             case '3':
                 this.setText("3");
+                this.setEnabled(false);
                 break;
             case '4':
                 this.setText("4");
+                this.setEnabled(false);
                 break;
             case '5':
                 this.setText("5");
+                this.setEnabled(false);
                 break;
             case '6':
                 this.setText("6");
+                this.setEnabled(false);
                 break;
             case '7':
                 this.setText("7");
+                this.setEnabled(false);
                 break;
             case '8':
                 this.setText("8");
+                this.setEnabled(false);
                 break;
         }
     }
