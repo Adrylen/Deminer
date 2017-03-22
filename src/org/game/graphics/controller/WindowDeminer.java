@@ -31,7 +31,7 @@ public class WindowDeminer {
 	}
 
 	private void init() {
-		this.gameModel.setGrid(10,10).setPercent(10);
+		this.gameModel.setGrid(10,10).setPercent(20);
 		GameGenerator.randomize(this.gameModel, 0, 0);
 
 		this.window.setObservable(this.gameModel);
