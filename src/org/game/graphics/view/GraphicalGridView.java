@@ -19,13 +19,13 @@ import org.game.models.GameGrid;
  * @author kieffersarah
  */
 public class GraphicalGridView extends JPanel{
-	private GameGrid grid;
+    private GameGrid grid;
 
     public GraphicalGridView(GameGrid grid, GameController controller){
     	this.grid = grid;
         int rows = grid.getRows();
         int cols = grid.getCols();
-        this.setLayout(new GridLayout(rows, cols, 0, 0));
+        this.setLayout(new GridLayout(rows, cols));
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
                 Case gameCase=grid.getCase(i, j);
