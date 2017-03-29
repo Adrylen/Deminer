@@ -38,6 +38,7 @@ public class Window extends JFrame implements Observer {
 	}
 
     public void main() {
+
 	GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
         NewGamePanel custom = new NewGamePanel();
         JMenuBar menuBar = new JMenuBar();
