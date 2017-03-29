@@ -39,7 +39,7 @@ public class Window extends JFrame implements Observer {
 
     public void main() {
 	GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
-        CustomGamePanel custom = new CustomGamePanel();
+        NewGamePanel custom = new NewGamePanel();
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(new Menu("Game"));
 
@@ -49,9 +49,8 @@ public class Window extends JFrame implements Observer {
 
         this.add(gridView, BorderLayout.CENTER);
         this.add(menuBar, BorderLayout.NORTH);
-        this.add(new JButton("South"), BorderLayout.SOUTH);
         this.add(custom, BorderLayout.EAST);
-        this.add(new JButton("West"), BorderLayout.WEST);
+
 
         this.setVisible(true);
     }
