@@ -13,9 +13,10 @@ import javax.swing.JInternalFrame;
  *
  * @author kieffersarah
  */
-public class NewGameFrame extends JFrame{
+public class NewGameFrame extends JInternalFrame{
     private int sizeX = 300;
     private int sizeY = 400;
+    private NewGamePanel game = new NewGamePanel();
 
     public NewGameFrame(String str, int sizeX, int sizeY){
         super(str);
@@ -25,8 +26,9 @@ public class NewGameFrame extends JFrame{
     
     public void main(){
         this.setLayout(new BorderLayout(5, 5));
-        NewGamePanel game = new NewGamePanel();
         this.add(game, BorderLayout.CENTER);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(sizeX,sizeY);
         this.setVisible(true);
     }
 }

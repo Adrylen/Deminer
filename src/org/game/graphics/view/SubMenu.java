@@ -5,8 +5,11 @@
  */
 package org.game.graphics.view;
 
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import org.game.graphics.controller.WindowDeminer;
 
 /**
  *
@@ -23,7 +26,19 @@ public class SubMenu extends JMenu{
         this.createNewElement("Beginner");
         this.createNewElement("Intermediate");
         this.createNewElement("Expert");
-        this.createNewElement("Custom");
+        this.createCustomMenu("Custom");
+    }
+    
+    private void createCustomMenu(String str){
+       this.add(new JMenuItem(new AbstractAction(str){
+           @Override
+           public void actionPerformed(ActionEvent e){
+               NewGameFrame custom = new NewGameFrame("custom",200,300);
+               WindowDeminer.getWindow().getContentPane().add(custom);
+               custom.main();
+           }
+       }));
+        
     }
     
     private void createNewElement(String str){

@@ -40,17 +40,17 @@ public class Window extends JFrame implements Observer {
     public void main() {
 
 	GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
-        NewGamePanel custom = new NewGamePanel();
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(new Menu("Game"));
+        JDesktopPane desktop = new JDesktopPane();
+        this.setContentPane(desktop);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(sizeX,sizeY);
         this.setLayout(new BorderLayout(5, 5));
-
         this.add(gridView, BorderLayout.CENTER);
         this.add(menuBar, BorderLayout.NORTH);
-        this.add(custom, BorderLayout.EAST);
+
 
 
         this.setVisible(true);

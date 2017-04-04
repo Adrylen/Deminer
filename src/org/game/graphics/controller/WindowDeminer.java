@@ -15,29 +15,33 @@ import org.game.models.GameGrid;
 import org.game.vue.Console;
 
 public class WindowDeminer {
-	private Console console;
-	private GameController controller;
-	private GameGrid gameModel;
-	private Window window;
+	private static Console console;
+	private static GameController controller;
+	private static GameGrid gameModel;
+	private static Window window;
 
-	public WindowDeminer() {
-		this.gameModel = new GameGrid();
-		this.controller = new GameController(this.gameModel);
-		this.window = new Window("Deminer", 600, 500);
-		this.console = new Console(this.gameModel);
+	public static void init() {
+		gameModel = new GameGrid();
+		controller = new GameController(gameModel);
+		window = new Window("Deminer", 600, 500);
+		console = new Console(gameModel);
 
-		this.gameModel.addObserver(this.window);
-		this.gameModel.addObserver(this.console);
+		gameModel.addObserver(window);
+		gameModel.addObserver(console);
 	}
 
-	public void init() {
-		this.gameModel.setGrid(10,10).setPercent(10);
-		//GameGenerator.randomize(this.gameModel, 0, 0);
+	public static void create() {
+		gameModel.setGrid(10,10).setPercent(10);
+		//GameGenerator.randomize(gameModel, 0, 0);
 
-		this.window.setObservable(this.gameModel);
-		this.window.useController(this.controller);
-		this.window.main();
+		window.setObservable(gameModel);
+		window.useController(controller);
+		window.main();
 
-		this.gameModel.update();
+		gameModel.update();
 	}
+        
+        public static Window getWindow() {
+            return window;
+        }
 }
