@@ -47,4 +47,8 @@ public class WindowDeminer {
 		init();
 		create(NewGame.EXPERT);
 	}
+        
+	public static Window getWindow() {
+            return window;
+        }
 }

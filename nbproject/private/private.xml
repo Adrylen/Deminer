@@ -3,21 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Menu.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/controller/WindowDeminer.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/controller/GameGenerator.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/vue/Console.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/NewGamePanel.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalCellView.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/models/Case.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/models/GameGrid.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalGridView.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Window.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/CustomGamePanel.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/SubMenu.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/main/Main.java</file>
-=======
-            <file>file:/home/adrylen/Documents/CIR3/Informatique/Java/TPs/Deminer/src/org/main/Main.java</file>
->>>>>>> 3c53d02dc76b1b2bd3ef94622c4282e4b656386c
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Window.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/NewGameFrame.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalGridView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
  *
  * @author kieffersarah
  */
-public class SubMenu extends JMenu{
+public class SubMenu extends JMenu {
     
     public SubMenu(String str){
         super(str);
@@ -28,7 +28,18 @@ public class SubMenu extends JMenu{
         this.createNewLevel("Beginner");
         this.createNewLevel("Intermediate");
         this.createNewLevel("Expert");
-        this.createNewElement("Custom");
+        this.createCustomMenu("Custom");
+    }
+    
+    private void createCustomMenu(String str){
+       this.add(new JMenuItem(new AbstractAction(str){
+           @Override
+           public void actionPerformed(ActionEvent e){
+               NewGameFrame custom = new NewGameFrame("custom",200,300);
+               WindowDeminer.getWindow().getContentPane().add(custom);
+               custom.main();
+           }
+       }));
     }
 
     private void createNewLevel(String str) {
@@ -44,9 +55,5 @@ public class SubMenu extends JMenu{
 	    });
 	    menu.setText(str);
 	    this.add(menu);
-    }
-
-    private void createNewElement(String str){
-        this.add(new JMenuItem(str));
     }
 }

@@ -8,6 +8,7 @@ package org.game.graphics.view;
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
@@ -37,8 +38,10 @@ public class Window extends JFrame implements Observer {
         this.sizeY = sizeY;
         this.setSize(sizeX,sizeY);
 
+        this.setContentPane(new JDesktopPane());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(5, 5));
+
 
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(new Menu("Game"));

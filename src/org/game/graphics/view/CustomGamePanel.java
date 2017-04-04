@@ -5,6 +5,8 @@
  */
 package org.game.graphics.view;
 
+import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
@@ -18,33 +20,52 @@ public class CustomGamePanel extends JPanel {
     private int rows = 9;
     private int columns = 19;
     private int mines = 76;
-    public JSlider slideR= new JSlider(9, 24, getRows());
-    public JSlider slideC= new JSlider(9, 30, getColumns());
-    public JSlider slideM= new JSlider(10, 145, getMines());
+    public JPanel panelR= new JPanel();
+    public JPanel panelC= new JPanel();
+    public JPanel panelM= new JPanel();
+    public JLabel labelR = new JLabel("rows");
+    public JLabel labelC = new JLabel("columns");
+    public JLabel labelM = new JLabel("mines");
+    public JSlider sliderR= new JSlider(9, 24, getRows());
+    public JSlider sliderC= new JSlider(9, 30, getColumns());
+    public JSlider sliderM= new JSlider(10, 145, getMines());
     public JTextField textR = new JTextField(String.valueOf(getRows()),2);
     public JTextField textC = new JTextField(String.valueOf(getColumns()),2);
     public JTextField textM = new JTextField(String.valueOf(getMines()),2);
     
     public CustomGamePanel(){
-        this.setLayout(new GridLayout(3,2));
-        slideR.setPaintTicks(true);
-        slideR.setPaintLabels(true);
-        slideR.setMinorTickSpacing(1);
-        slideR.setMajorTickSpacing(2);
-        slideC.setPaintTicks(true);
-        slideC.setPaintLabels(true);
-        slideC.setMinorTickSpacing(2);
-        slideC.setMajorTickSpacing(4);
-        slideM.setPaintTicks(true);
-        slideM.setPaintLabels(true);
-        slideM.setMinorTickSpacing(13);
-        slideM.setMajorTickSpacing(26);
-        this.add(slideR);
-        this.add(textR);
-        this.add(slideC);
-        this.add(textC);
-        this.add(slideM);
-        this.add(textM);
+        this.setLayout(new GridLayout(3,3));
+        sliderR.setPaintTicks(true);
+        sliderR.setPaintLabels(true);
+        sliderR.setMinorTickSpacing(1);
+        sliderR.setMajorTickSpacing(2);
+        sliderR.setEnabled(false);
+        sliderC.setPaintTicks(true);
+        sliderC.setPaintLabels(true);
+        sliderC.setMinorTickSpacing(2);
+        sliderC.setMajorTickSpacing(4);
+        sliderC.setEnabled(false);
+        sliderM.setPaintTicks(true);
+        sliderM.setPaintLabels(true);
+        sliderM.setMinorTickSpacing(13);
+        sliderM.setMajorTickSpacing(26);
+        sliderM.setEnabled(false);
+        textR.setEnabled(false);
+        textC.setEnabled(false);
+        textM.setEnabled(false);
+        panelR.add(labelR);
+        panelR.add(sliderR);        
+        panelR.add(textR);
+        panelC.add(labelC);
+        panelC.add(sliderC);
+        panelC.add(textC);
+        panelM.add(labelM);
+        panelM.add(sliderM);
+        panelM.add(textM);
+
+        this.add(panelR);
+        this.add(panelC);
+        this.add(panelM);
     }
 
     /**
