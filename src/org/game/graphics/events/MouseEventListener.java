@@ -9,10 +9,11 @@
 package org.game.graphics.events;
 
 import org.game.controller.GameController;
+import org.game.graphics.controller.WindowDeminer;
 import org.game.graphics.view.GraphicalCellView;
-import org.game.models.Case;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -25,13 +26,16 @@ public class MouseEventListener extends MouseAdapter {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		if(((JButton) e.getSource()).isEnabled()) {
-			boolean show = (SwingUtilities.isLeftMouseButton(e)) ? true : false;
-			this.controller.updateModel(((GraphicalCellView) e.getSource()).getCase(), show);
+		if(this.controller == null) {
+			WindowDeminer.create(WindowDeminer.getActualLevel());
 		} else {
-			if (e.getClickCount() == 2) {
-				System.out.println("double clicked");
-				this.controller.showNeighbors(((GraphicalCellView) e.getSource()).getCase());
+			if (((JButton) e.getSource()).isEnabled()) {
+				boolean show = (SwingUtilities.isLeftMouseButton(e)) ? true : false;
+				this.controller.updateModel(((GraphicalCellView) e.getSource()).getCase(), show);
+			} else {
+				if (e.getClickCount() == 2) {
+					this.controller.showNeighbors(((GraphicalCellView) e.getSource()).getCase());
+				}
 			}
 		}
 	}

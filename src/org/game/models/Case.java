@@ -24,14 +24,14 @@ public class Case {
 		this.markedAsIndeterminate = false;
 
 		this.neighbors = 0;
-		this.symbol = '#';
+		this.symbol = Character.MIN_VALUE;
 	}
 
 	public Case show() {
 		this.hidden = false;
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
-		this.symbol = this.mined ? 'x' : this.neighbors != 0 ? (char)(this.neighbors+'0') : '.';
+		this.symbol = this.mined ? 'x' : this.neighbors != 0 ? (char)(this.neighbors+'0') : Character.MIN_VALUE;
 		return this;
 	}
 
@@ -57,7 +57,7 @@ public class Case {
 	public Case unmark() {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
-		this.symbol = '#';
+		this.symbol = Character.MIN_VALUE;
 		return this;
 	}
 

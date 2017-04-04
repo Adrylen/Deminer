@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package org.game.graphics.view;
-import java.awt.BorderLayout;
-import java.util.Observable;
-import java.util.Observer;
-import javax.swing.*;
 
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
+
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
@@ -18,15 +21,31 @@ import org.game.models.GameGrid;
  */
 public class Window extends JFrame implements Observer {
 	private GameController controller;
+	private GraphicalGridView gridView;
 	private Observable gameModel;
+	private InfoPanel infoPanel;
+
+	private boolean start;
 
     private int sizeX = 300;
     private int sizeY = 400;
 
 	public Window(String str, int sizeX, int sizeY){
         super(str);
+        this.gridView = null;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.setSize(sizeX,sizeY);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout(5, 5));
+
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(new Menu("Game"));
+        this.add(menuBar, BorderLayout.NORTH);
+
+        infoPanel = new InfoPanel();
+        this.add(infoPanel, BorderLayout.SOUTH);
     }
 
     public void setObservable(Observable gameModel) {
@@ -38,20 +57,14 @@ public class Window extends JFrame implements Observer {
 	}
 
     public void main() {
-	GraphicalGridView gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
-        CustomGamePanel custom = new CustomGamePanel();
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.add(new Menu("Game"));
+		this.start = true;
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(sizeX,sizeY);
-        this.setLayout(new BorderLayout(5, 5));
-
-        this.add(gridView, BorderLayout.CENTER);
-        this.add(menuBar, BorderLayout.NORTH);
-        this.add(new JButton("South"), BorderLayout.SOUTH);
-        this.add(custom, BorderLayout.EAST);
-        this.add(new JButton("West"), BorderLayout.WEST);
+		if(this.gridView != null) {
+			//this.gridView.purge();
+			this.remove(this.gridView);
+		}
+		this.gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
+        this.add(this.gridView, BorderLayout.CENTER);
 
         this.setVisible(true);
     }
@@ -85,7 +98,12 @@ public class Window extends JFrame implements Observer {
     }
 
     public GraphicalGridView getPanel() {
-	    return (GraphicalGridView) this.getContentPane().getComponent(0);
+    	for(Component c : this.getContentPane().getComponents()) {
+    		if(c instanceof  GraphicalGridView) {
+    			return (GraphicalGridView) c;
+		    }
+	    }
+	    return null;
     }
 
 	@Override
@@ -95,10 +113,20 @@ public class Window extends JFrame implements Observer {
     	        this.getPanel().getButton(i,j).changeIcon();
 			}
 		}
+
+		infoPanel.updateMines(((GameGrid)obj).getNumberOfMines());
+		if(this.controller.isStarted()) {
+			infoPanel.getTimer().start();
+		} else {
+			infoPanel.getTimer().reset();
+		}
+
 		if(this.controller.isLoose()) {
 			System.out.println("LOOSE");
+			infoPanel.getTimer().stop();
 		} else if(this.controller.isWin()) {
 			System.out.println("WIN");
+			infoPanel.getTimer().stop();
 		}
 	}
 }

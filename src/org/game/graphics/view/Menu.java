@@ -5,15 +5,16 @@
  */
 package org.game.graphics.view;
 
+import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author kieffersarah
  */
 public class Menu extends JMenu{
-    
     public Menu(String str){
         super(str);
         this.main();
@@ -29,6 +30,12 @@ public class Menu extends JMenu{
     }
     
     private void createNewElement(String str){
-        this.add(new JMenuItem(str));
+//        this.add(new JMenuItem(str));
+        this.add(new JMenuItem(new AbstractAction(str) {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.exit(0);
+            }
+        }));
     }
 }

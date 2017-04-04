@@ -9,35 +9,42 @@
 package org.game.graphics.controller;
 
 import org.game.controller.GameController;
-import org.game.controller.GameGenerator;
 import org.game.graphics.view.Window;
 import org.game.models.GameGrid;
-import org.game.vue.Console;
+import org.game.models.NewGame;
 
 public class WindowDeminer {
-	private Console console;
-	private GameController controller;
-	private GameGrid gameModel;
-	private Window window;
+	private static GameController controller;
+	private static GameGrid gameModel;
+	private static NewGame actualLevel;
+	private static Window window;
 
-	public WindowDeminer() {
-		this.gameModel = new GameGrid();
-		this.controller = new GameController(this.gameModel);
-		this.window = new Window("Deminer", 600, 500);
-		this.console = new Console(this.gameModel);
-
-		this.gameModel.addObserver(this.window);
-		this.gameModel.addObserver(this.console);
+	public static void init() {
+		window = new Window("Deminer", 1100, 700);
 	}
 
-	public void init() {
-		this.gameModel.setGrid(10,10).setPercent(10);
-		//GameGenerator.randomize(this.gameModel, 0, 0);
+	public static void create(NewGame level) {
+		actualLevel = level;
 
-		this.window.setObservable(this.gameModel);
-		this.window.useController(this.controller);
-		this.window.main();
+		gameModel = new GameGrid();
+		gameModel.setGrid(level.rows(), level.cols()).setMines(level.mines());
 
-		this.gameModel.update();
+		controller = new GameController(gameModel);
+
+		gameModel.addObserver(window);
+		window.setObservable(gameModel);
+		window.useController(controller);
+
+		window.main();
+		gameModel.update();
+	}
+
+	public static NewGame getActualLevel() {
+		return actualLevel;
+	}
+
+	public static void launch() {
+		init();
+		create(NewGame.EXPERT);
 	}
 }

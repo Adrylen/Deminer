@@ -8,7 +8,6 @@
 
 package org.game.controller;
 
-import org.game.models.Case;
 import org.game.models.GameGrid;
 
 import java.util.Random;

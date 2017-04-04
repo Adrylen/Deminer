@@ -18,7 +18,7 @@ public class GameGrid extends Observable {
 	public GameGrid setGrid(int rows, int cols) {
 		this.grid = new Case[rows][cols];
 		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < cols; j++) {
+			for (int j = 0; j < cols; j++) {
 				this.grid[i][j] = new Case();
 			}
 		}
@@ -28,6 +28,12 @@ public class GameGrid extends Observable {
 	public GameGrid setPercent(int percent) {
 		this.percent = percent;
 		this.mines = (int)(this.getSize() * this.percent / 100.0);
+		return this;
+	}
+
+	public GameGrid setMines(int mines) {
+		this.mines = mines;
+		this.percent = (int)(this.mines * 100.0 / this.getSize());
 		return this;
 	}
 

@@ -5,10 +5,10 @@
  */
 package org.game.graphics.view;
 
-import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import java.awt.GridLayout;
 
 /**
  *
@@ -39,7 +39,7 @@ public class CustomGamePanel extends JPanel {
         slideM.setPaintLabels(true);
         slideM.setMinorTickSpacing(13);
         slideM.setMajorTickSpacing(26);
-        this.add(slideR);        
+        this.add(slideR);
         this.add(textR);
         this.add(slideC);
         this.add(textC);

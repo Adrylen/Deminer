@@ -37,6 +37,10 @@ public class GameController {
 		return this.win;
 	}
 
+	public boolean isStarted() {
+		return !this.firstTurn;
+	}
+
 	public boolean createGrid(String str) {
 		String[] args = str.split(" ");
 		if(args.length == 3) {
@@ -207,7 +211,6 @@ public class GameController {
 		}
 		if(this.win) {
 			showAll();
-//			System.out.println("You WIN !!!");
 		}
 	}
 

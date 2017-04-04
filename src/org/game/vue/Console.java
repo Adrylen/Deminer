@@ -5,10 +5,11 @@
  */
 package org.game.vue;
 
+import org.game.models.GameGrid;
+
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
-import org.game.models.GameGrid;
 
 /**
  *
@@ -74,7 +75,7 @@ public class Console implements Observer {
                     System.out.printf("%3d",i);
                 }else{
                     if(!grid.getCase(i, j).isMined()){
-                        System.out.printf("%3c",grid.getCase(i, j).getSymbol());  
+                        System.out.printf("%3c",grid.getCase(i, j).getSymbol());
                     }else{
                         System.out.print("  x");
                     }

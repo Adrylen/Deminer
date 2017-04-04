@@ -5,14 +5,11 @@
  */
 package org.game.graphics.view;
 
-import org.game.graphics.view.GraphicalCellView;
-import java.awt.GridLayout;
+import org.game.controller.GameController;
+import org.game.models.GameGrid;
 
 import javax.swing.JPanel;
-
-import org.game.controller.GameController;
-import org.game.models.Case;
-import org.game.models.GameGrid;
+import java.awt.GridLayout;
 
 /**
  *
@@ -28,13 +25,18 @@ public class GraphicalGridView extends JPanel{
         this.setLayout(new GridLayout(rows, cols));
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                Case gameCase=grid.getCase(i, j);
-                this.add(new GraphicalCellView(gameCase, controller));
+//                Case gameCase=grid.getCase(i, j);
+                this.add(new GraphicalCellView(grid.getCase(i,j), controller));
             }
         }
     }
 
+    public GameGrid getGrid() {
+    	return this.grid;
+    }
+
     public GraphicalCellView getButton(int i, int j) {
-		return (GraphicalCellView) this.getComponent(this.grid.getRows()*i + j);
+    	int nb = this.grid.getCols()*i + j;
+		return (GraphicalCellView) this.getComponent(nb);
     }
 }
