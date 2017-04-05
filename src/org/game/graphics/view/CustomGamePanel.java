@@ -5,11 +5,11 @@
  */
 package org.game.graphics.view;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JTextField;
 import java.awt.GridLayout;
 
 /**
@@ -20,52 +20,19 @@ public class CustomGamePanel extends JPanel {
     private int rows = 9;
     private int columns = 19;
     private int mines = 76;
-    public JPanel panelR= new JPanel();
-    public JPanel panelC= new JPanel();
-    public JPanel panelM= new JPanel();
-    public JLabel labelR = new JLabel("rows");
-    public JLabel labelC = new JLabel("columns");
-    public JLabel labelM = new JLabel("mines");
-    public JSlider sliderR= new JSlider(9, 24, getRows());
-    public JSlider sliderC= new JSlider(9, 30, getColumns());
-    public JSlider sliderM= new JSlider(10, 145, getMines());
-    public JTextField textR = new JTextField(String.valueOf(getRows()),2);
-    public JTextField textC = new JTextField(String.valueOf(getColumns()),2);
-    public JTextField textM = new JTextField(String.valueOf(getMines()),2);
+    private CustomOptionPanel panelR= null;
+    private CustomOptionPanel panelC= null;
+    private CustomOptionPanel panelM= null;
+
     
     public CustomGamePanel(){
         this.setLayout(new GridLayout(3,3));
-        sliderR.setPaintTicks(true);
-        sliderR.setPaintLabels(true);
-        sliderR.setMinorTickSpacing(1);
-        sliderR.setMajorTickSpacing(2);
-        sliderR.setEnabled(false);
-        sliderC.setPaintTicks(true);
-        sliderC.setPaintLabels(true);
-        sliderC.setMinorTickSpacing(2);
-        sliderC.setMajorTickSpacing(4);
-        sliderC.setEnabled(false);
-        sliderM.setPaintTicks(true);
-        sliderM.setPaintLabels(true);
-        sliderM.setMinorTickSpacing(13);
-        sliderM.setMajorTickSpacing(26);
-        sliderM.setEnabled(false);
-        textR.setEnabled(false);
-        textC.setEnabled(false);
-        textM.setEnabled(false);
-        panelR.add(labelR);
-        panelR.add(sliderR);        
-        panelR.add(textR);
-        panelC.add(labelC);
-        panelC.add(sliderC);
-        panelC.add(textC);
-        panelM.add(labelM);
-        panelM.add(sliderM);
-        panelM.add(textM);
-
-        this.add(panelR);
-        this.add(panelC);
-        this.add(panelM);
+        panelR= new CustomOptionPanel("Rows : ", 9, 24, getRows(), 1, 2);
+        panelC= new CustomOptionPanel("Columns : ", 9, 30, getColumns(), 2, 4);
+        panelM= new CustomOptionPanel("Mines : ", 10, 145, getMines(), 13, 26);
+        this.add(panelR.init());
+        this.add(panelC.init());
+        this.add(panelM.init());
     }
 
     /**
@@ -108,6 +75,48 @@ public class CustomGamePanel extends JPanel {
      */
     public void setMines(int mines) {
         this.mines = mines;
+    }
+
+    /**
+     * @return the panelR
+     */
+    public CustomOptionPanel getPanelR() {
+        return panelR;
+    }
+
+    /**
+     * @param panelR the panelR to set
+     */
+    public void setPanelR(CustomOptionPanel panelR) {
+        this.panelR = panelR;
+    }
+
+    /**
+     * @return the panelC
+     */
+    public CustomOptionPanel getPanelC() {
+        return panelC;
+    }
+
+    /**
+     * @param panelC the panelC to set
+     */
+    public void setPanelC(CustomOptionPanel panelC) {
+        this.panelC = panelC;
+    }
+
+    /**
+     * @return the panelM
+     */
+    public CustomOptionPanel getPanelM() {
+        return panelM;
+    }
+
+    /**
+     * @param panelM the panelM to set
+     */
+    public void setPanelM(CustomOptionPanel panelM) {
+        this.panelM = panelM;
     }
     
 }

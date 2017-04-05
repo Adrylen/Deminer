@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
  * @author kieffersarah
  */
 public class SubMenu extends JMenu {
+    private NewGameFrame custom = null;
     
     public SubMenu(String str){
         super(str);
@@ -35,9 +36,14 @@ public class SubMenu extends JMenu {
        this.add(new JMenuItem(new AbstractAction(str){
            @Override
            public void actionPerformed(ActionEvent e){
-               NewGameFrame custom = new NewGameFrame("custom",200,300);
+               if(custom == null){
+                   custom = new NewGameFrame("custom");
                WindowDeminer.getWindow().getContentPane().add(custom);
                custom.main();
+               }
+               else{
+                   custom.setVisible(true);
+               }
            }
        }));
     }

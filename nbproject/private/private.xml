@@ -5,12 +5,15 @@
         <group>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Menu.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/controller/WindowDeminer.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/models/NewGame.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/NewGamePanel.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/CustomOptionPanel.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/GraphicalCellView.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/InfoPanel.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/CustomGamePanel.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/Window.java</file>
-            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/NewGameFrame.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/SubMenu.java</file>
+            <file>file:/home/kieffersarah/Documents/Deminer/src/org/game/graphics/view/NewGameFrame.java</file>
             <file>file:/home/kieffersarah/Documents/Deminer/src/org/main/Main.java</file>
         </group>
     </open-files>
