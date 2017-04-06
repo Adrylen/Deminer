@@ -42,7 +42,6 @@ public class Window extends JFrame implements Observer {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(5, 5));
 
-
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(new Menu("Game"));
         this.add(menuBar, BorderLayout.NORTH);
@@ -125,10 +124,10 @@ public class Window extends JFrame implements Observer {
 		}
 
 		if(this.controller.isLoose()) {
-			System.out.println("LOOSE");
+			DialogFrame.alert(this,false);
 			infoPanel.getTimer().stop();
 		} else if(this.controller.isWin()) {
-			System.out.println("WIN");
+			DialogFrame.alert(this,true);
 			infoPanel.getTimer().stop();
 		}
 	}

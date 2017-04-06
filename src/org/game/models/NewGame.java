@@ -7,7 +7,7 @@
 
 package org.game.models;
 
-import org.jetbrains.annotations.Contract;
+//import org.jetbrains.annotations.Contract;
 
 public enum NewGame {
 	BEGINNER(9,9,10),
@@ -22,17 +22,17 @@ public enum NewGame {
 		this.mines = mines;
 	}
 
-	@Contract(pure = true)
+//	@Contract(pure = true)
 	public int rows() {
 		return this.rows;
 	}
 
-	@Contract(pure = true)
+//	@Contract(pure = true)
 	public int cols() {
 		return this.cols;
 	}
 
-	@Contract(pure = true)
+//	@Contract(pure = true)
 	public int mines() {
 		return this.mines;
 	}

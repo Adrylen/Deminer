@@ -1,6 +1,9 @@
-.idea
-Deminer.iml
-/build/
-/dist/
-/out/
+.idea/
+build/
+dist/
+nbproject/
+out/
 
+build.xml
+Deminer.iml
+manifest.mf

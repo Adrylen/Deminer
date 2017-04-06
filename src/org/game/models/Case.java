@@ -44,6 +44,7 @@ public class Case {
 		this.markedAsMined = true;
 		this.markedAsIndeterminate = false;
 		this.symbol = '!';
+//		this.symbol = Character.MIN_VALUE;
 		return this;
 	}
 
@@ -51,6 +52,7 @@ public class Case {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = true;
 		this.symbol = '?';
+//		this.symbol = Character.MIN_VALUE;
 		return this;
 	}
 

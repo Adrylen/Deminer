@@ -71,10 +71,11 @@ public class GameController {
 		if(gameCase.isHidden()) {
 			gameCase.show();
 			if(!gameCase.hasNeighbors() && !gameCase.isMined()) {
-				this.show((i == 0) ? i : i-1, j);
-				this.show((i == this.gameModel.getRows()-1) ? i : i+1, j);
-				this.show(i, (j == 0) ? j : j-1);
-				this.show(i, (j == this.gameModel.getCols()-1) ? j : j+1);
+				for(int a = i == 0 ? i : i-1; a <= (i == this.gameModel.getRows()-1 ? i : i+1); ++a) {
+					for(int b = j == 0 ? j : j-1; b <= (j == this.gameModel.getCols()-1 ? j : j+1); ++b) {
+						this.show(a,b);
+					}
+				}
 			}
 		}
 	}

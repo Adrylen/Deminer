@@ -57,6 +57,17 @@ public class GraphicalCellView extends JButton {
     }
 
     public void changeIcon(){
+//    	if(this.gameCase.isMarkedAsMined()) {
+//		    try {
+//		    	Image img = ImageIO.read(new File("assets/images/flag.png"));
+//			    this.setIcon(new ImageIcon());
+//		    } catch (IOException e) {
+//			    e.printStackTrace();
+//		    }
+//	    }
+//    	if(this.gameCase.isMined() && !this.gameCase.isHidden()) {
+//
+//	    }
         if((this.gameCase.getSymbol() > '0' && this.gameCase.getSymbol() <= '9') || (!this.gameCase.isHidden() && !this.gameCase.isMined() && !this.gameCase.hasNeighbors())) {
         	this.setEnabled(false);
         }

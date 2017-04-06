@@ -11,7 +11,9 @@ import org.game.models.NewGame;
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -43,7 +45,9 @@ public class SubMenu extends JMenu {
     }
 
     private void createNewLevel(String str) {
-	    JMenuItem menu = new JMenuItem(new AbstractAction() {
+    	JMenuItem menu = new JMenuItem();
+
+    	menu.setAction(new AbstractAction() {
 		    @Override
 		    public void actionPerformed(ActionEvent actionEvent) {
 		    	switch(str) {
@@ -53,7 +57,15 @@ public class SubMenu extends JMenu {
 			    }
 		    }
 	    });
-	    menu.setText(str);
+
+	    menu.setAccelerator(KeyStroke.getKeyStroke(
+		    str.equals("Beginner") ? KeyEvent.VK_B :
+			str.equals("Intermediate") ? KeyEvent.VK_I :
+			KeyEvent.VK_E,
+	        KeyEvent.CTRL_DOWN_MASK
+	    ));
+
+    	menu.setText(str);
 	    this.add(menu);
     }
 }

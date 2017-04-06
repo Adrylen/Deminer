@@ -25,6 +25,7 @@ public class MouseEventListener extends MouseAdapter {
 		this.controller = controller;
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(this.controller == null) {
 			WindowDeminer.create(WindowDeminer.getActualLevel());
