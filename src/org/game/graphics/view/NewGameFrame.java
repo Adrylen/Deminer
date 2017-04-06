@@ -5,30 +5,72 @@
  */
 package org.game.graphics.view;
 
+
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author kieffersarah
  */
-public class NewGameFrame extends JInternalFrame{
-    private int sizeX = 300;
-    private int sizeY = 400;
+public class NewGameFrame extends JFrame{
     private NewGamePanel game = new NewGamePanel();
+    private NewGameFrame ui = this;
 
-    public NewGameFrame(String str, int sizeX, int sizeY){
+    public NewGameFrame(String str){
         super(str);
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
     }
     
+    
     public void main(){
-        this.setLayout(new BorderLayout(5, 5));
-        this.add(game, BorderLayout.CENTER);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(sizeX,sizeY);
+        this.setLayout(new BorderLayout(0, 0));
+        this.add(getGame(), BorderLayout.CENTER);
+        this.setSize(350, 500);
+        this.setResizable(false);
+        this.getGame().getCancel().addMouseListener(new MouseAdapter(){
+            @Override 
+                public void mouseClicked(MouseEvent e){
+                    getUi().setVisible(false);
+                }
+        });
+        
+        this.getGame().getStart().addMouseListener(new MouseAdapter(){
+            @Override 
+                public void mouseClicked(MouseEvent e){
+                    getUi().setVisible(false);
+                }
+        });
         this.setVisible(true);
     }
+
+    /**
+     * @return the game
+     */
+    public NewGamePanel getGame() {
+        return game;
+    }
+
+    /**
+     * @param game the game to set
+     */
+    public void setGame(NewGamePanel game) {
+        this.game = game;
+    }
+
+    /**
+     * @return the ui
+     */
+    public NewGameFrame getUi() {
+        return ui;
+    }
+
+    /**
+     * @param ui the ui to set
+     */
+    public void setUi(NewGameFrame ui) {
+        this.ui = ui;
+    }
+
 }

@@ -19,15 +19,33 @@ public class WindowDeminer {
 	private static NewGame actualLevel;
 	private static Window window;
 
+	private static boolean templateLevel = false;
+
+	private static int[] levelData;
+
 	public static void init() {
 		window = new Window("Deminer", 1100, 700);
 	}
 
 	public static void create(NewGame level) {
 		actualLevel = level;
+		if(actualLevel == NewGame.CUSTOM) {
+			create(levelData);
+		} else {
+			templateLevel = true;
+			create(new int[]{level.rows(), level.cols(), level.mines()});
+		}
+	}
+
+	public static void create(int[] level) {
+		if(!templateLevel) {
+			actualLevel = NewGame.CUSTOM;
+		}
+		templateLevel = false;
+		levelData = level;
 
 		gameModel = new GameGrid();
-		gameModel.setGrid(level.rows(), level.cols()).setMines(level.mines());
+		gameModel.setGrid(levelData[0],levelData[1]).setMines(level[2]);
 
 		controller = new GameController(gameModel);
 
@@ -45,7 +63,7 @@ public class WindowDeminer {
 
 	public static void launch() {
 		init();
-		create(NewGame.EXPERT);
+		create(NewGame.BEGINNER);
 	}
         
 	public static Window getWindow() {

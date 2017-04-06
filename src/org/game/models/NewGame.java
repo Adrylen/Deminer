@@ -12,7 +12,8 @@ package org.game.models;
 public enum NewGame {
 	BEGINNER(9,9,10),
 	INTERMEDIATE(16,16,40),
-	EXPERT(16,30,99);
+	EXPERT(16,30,99),
+	CUSTOM(-1,-1,-1);
 
 	private int rows, cols, mines;
 
@@ -22,17 +23,14 @@ public enum NewGame {
 		this.mines = mines;
 	}
 
-//	@Contract(pure = true)
 	public int rows() {
 		return this.rows;
 	}
 
-//	@Contract(pure = true)
 	public int cols() {
 		return this.cols;
 	}
 
-//	@Contract(pure = true)
 	public int mines() {
 		return this.mines;
 	}
