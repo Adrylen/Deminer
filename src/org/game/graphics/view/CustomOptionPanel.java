@@ -30,6 +30,7 @@ public class CustomOptionPanel extends JPanel{
     private String str;
     private int min;
     private int max;
+    private int secondMax;
     private int value;
     private int minor;
     private int major;
@@ -45,7 +46,8 @@ public class CustomOptionPanel extends JPanel{
         this.setMinor(minor);
         this.setMajor(major);
         this.setStr(str);
-        this.setValue(value);        
+        this.setValue(value);
+        this.setSecondMax(max);
     }
     
     public CustomOptionPanel init(){
@@ -244,5 +246,19 @@ public class CustomOptionPanel extends JPanel{
      */
     public void setText(JTextField text) {
         this.text = text;
+    }
+
+    /**
+     * @return the secondMax
+     */
+    public int getSecondMax() {
+        return secondMax;
+    }
+
+    /**
+     * @param secondMax the secondMax to set
+     */
+    public void setSecondMax(int secondMax) {
+        this.secondMax = secondMax;
     }
 }

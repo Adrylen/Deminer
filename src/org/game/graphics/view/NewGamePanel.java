@@ -16,6 +16,8 @@ import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.JComponent;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -45,7 +47,43 @@ public class NewGamePanel extends JPanel{
         getGroup().add(getIntermediate());
         getGroup().add(getExpert());
         getGroup().add(getCust());
+        this.getCustom().getPanelR().getSlider().addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e){
+                int i = (int) Math.ceil(getCustom().getPanelR().getSlider().getValue()*getCustom().getPanelC().getSlider().getValue()*0.85);
+                if(i<getCustom().getPanelM().getSlider().getValue()){
+                    getCustom().getPanelM().setSecondMax(i);
+                    getCustom().getPanelM().getSlider().setMaximum(i);
+                    getCustom().getPanelM().getSlider().setValue(i);
+                    
+                }
+                if(i>getCustom().getPanelM().getSecondMax() && i<getCustom().getPanelM().getMax()){
+                    getCustom().getPanelM().getSlider().setMaximum(i);
+                }
+                if(i>getCustom().getPanelM().getMax()){
+                    getCustom().getPanelM().getSlider().setMaximum(getCustom().getPanelM().getMax());
+                }
+            }
+        });
 
+        this.getCustom().getPanelC().getSlider().addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e){
+                int i = (int) Math.ceil(getCustom().getPanelR().getSlider().getValue()*getCustom().getPanelC().getSlider().getValue()*0.85);
+                if(i<getCustom().getPanelM().getSlider().getValue()){
+                    getCustom().getPanelM().setSecondMax(i);
+                    getCustom().getPanelM().getSlider().setMaximum(i);
+                    getCustom().getPanelM().getSlider().setValue(i);
+                    
+                }
+                if(i>getCustom().getPanelM().getSecondMax() && i<getCustom().getPanelM().getMax()){
+                    getCustom().getPanelM().getSlider().setMaximum(i);
+                }
+                if(i>getCustom().getPanelM().getMax()){
+                    getCustom().getPanelM().getSlider().setMaximum(getCustom().getPanelM().getMax());
+                }
+            }
+        });
         this.setLayout(new GridBagLayout());
         addC(getChoice(), getSelect(), 0, 0, 1, 1, GridBagConstraints.WEST);
         addC(getChoice(), getBeginner(), 0, 1, 1, 1, GridBagConstraints.WEST);
