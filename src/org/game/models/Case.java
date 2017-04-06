@@ -43,16 +43,14 @@ public class Case {
 	public Case markAsMined() {
 		this.markedAsMined = true;
 		this.markedAsIndeterminate = false;
-		this.symbol = '!';
-//		this.symbol = Character.MIN_VALUE;
+		this.symbol = Character.MIN_VALUE;
 		return this;
 	}
 
 	public Case markAsIndeterminate() {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = true;
-		this.symbol = '?';
-//		this.symbol = Character.MIN_VALUE;
+		this.symbol = Character.MIN_VALUE;
 		return this;
 	}
 

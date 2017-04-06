@@ -9,6 +9,7 @@ import org.game.controller.GameController;
 import org.game.graphics.events.MouseEventListener;
 import org.game.models.Case;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -16,6 +17,9 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -57,14 +61,20 @@ public class GraphicalCellView extends JButton {
     }
 
     public void changeIcon(){
-//    	if(this.gameCase.isMarkedAsMined()) {
-//		    try {
-//		    	Image img = ImageIO.read(new File("assets/images/flag.png"));
-//			    this.setIcon(new ImageIcon());
-//		    } catch (IOException e) {
-//			    e.printStackTrace();
-//		    }
-//	    }
+	    try {
+	    	ImageIcon img = null;
+		    int size = this.getWidth() < this.getHeight() ? this.getWidth() : this.getHeight();
+		    if(this.gameCase.isMarkedAsMined()) {
+			    img = new ImageIcon(ImageIO.read(new File("assets/images/flag.png"))
+				    .getScaledInstance(size, size, Image.SCALE_DEFAULT));
+		    } else if(this.gameCase.isMarkedAsIndeterminate()) {
+				img = new ImageIcon(ImageIO.read(new File("assets/images/null.png"))
+					.getScaledInstance(size, size, Image.SCALE_DEFAULT));
+		    }
+		    this.setIcon(img);
+	    } catch (IOException e) {
+		    e.printStackTrace();
+	    }
 //    	if(this.gameCase.isMined() && !this.gameCase.isHidden()) {
 //
 //	    }

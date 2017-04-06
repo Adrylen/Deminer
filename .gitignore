@@ -3,6 +3,7 @@ build/
 dist/
 nbproject/
 out/
+src/org/test/
 
 build.xml
 Deminer.iml

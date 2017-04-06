@@ -45,7 +45,7 @@ public class MainTest {
 			ois = new ObjectInputStream(file);
 
 			Scores tmp = (Scores) ois.readObject();
-			System.out.println("IN SCORES : "+tmp.getStr());
+			System.out.println("IN SCORES : "+tmp.getX());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -62,11 +62,11 @@ public class MainTest {
 	}
 
 	public static void main(String[] args) {
-		score.setStr("Bonjour");
+		score.setX(1);
 		write();read();
-		score.setStr("Pas à afficher");
+		score.setX(3);
 		write();
-		score.setStr("Mais là oui");
+		score.setX(2);
 		write();read();
 	}
 }

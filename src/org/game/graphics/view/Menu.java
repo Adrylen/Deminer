@@ -5,12 +5,9 @@
  */
 package org.game.graphics.view;
 
-import org.game.graphics.controller.WindowDeminer;
-
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 
 /**
@@ -18,6 +15,7 @@ import java.awt.event.ActionEvent;
  * @author kieffersarah
  */
 public class Menu extends JMenu{
+	private ScoreBoard scoreBoard;
 	public Menu(String str){
 		super(str);
 		this.main();
@@ -35,22 +33,22 @@ public class Menu extends JMenu{
 
 	private void createNewElement(String str){
 		if(str.equals("High Scores")) {
-			ScoreBoard scoreBoard = new ScoreBoard(str, 100, 100);
-			scoreBoard.main();
 			this.add(new JMenuItem(new AbstractAction(str) {
 				@Override
 				public void actionPerformed(ActionEvent actionEvent) {
-					boolean isAdded = false;
-					for(Component c : WindowDeminer.getWindow().getContentPane().getComponents()) {
-						if(c instanceof ScoreBoard) {
-							isAdded = true;
-							break;
-						}
-					}
-					if(!isAdded) {
-						WindowDeminer.getWindow().getContentPane().add(scoreBoard);
-					}
-					scoreBoard.toggleVisible();
+					scoreBoard = new ScoreBoard(str, 180, 220);
+					scoreBoard.main();
+//					boolean isAdded = false;
+//					for(Component c : WindowDeminer.getWindow().getContentPane().getComponents()) {
+//						if(c instanceof ScoreBoard) {
+//							isAdded = true;
+//							break;
+//						}
+//					}
+//					if(!isAdded) {
+//						WindowDeminer.getWindow().getContentPane().add(scoreBoard);
+//					}
+//					scoreBoard.toggleVisible();
 				}
 			}));
 		} else {
@@ -61,5 +59,9 @@ public class Menu extends JMenu{
 				}
 			}));
 		}
+	}
+
+	public ScoreBoard getScoreBoard() {
+		return scoreBoard;
 	}
 }

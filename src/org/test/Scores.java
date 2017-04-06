@@ -7,16 +7,11 @@
 
 package org.test;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class Scores implements Serializable {
-	private String str;
-
-	public String getStr() {
-		return this.str;
-	}
-
-	public void setStr(String str) {
-		this.str = str;
-	}
+	private int x;
 }

@@ -19,10 +19,10 @@ public class DialogFrame {
 	public static void alert(JFrame frame, boolean win) {
 		int action = JOptionPane.showOptionDialog(
 			frame,
-			win ? "You Win !!!" : "You loose...",
+			win ? "Thanks for playing !" : "You loose...",
 			"End of the game",
 			JOptionPane.DEFAULT_OPTION,
-			JOptionPane.ERROR_MESSAGE,
+			win ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.ERROR_MESSAGE,
 			null,
 			new Object[]{"Restart", "Quit"},
 			null
@@ -32,5 +32,9 @@ public class DialogFrame {
 		} else if(action == QUIT_OPTION) {
 			System.exit(0);
 		}
+	}
+
+	public static String askPseudo(JFrame frame) {
+		return JOptionPane.showInputDialog(frame, "YOU WIN !!!\nPseudo");
 	}
 }

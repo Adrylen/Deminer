@@ -7,6 +7,7 @@ package org.game.graphics.view;
 
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
+import org.game.models.Scores;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ import java.util.Observer;
 public class Window extends JFrame implements Observer {
 	private GameController controller;
 	private GraphicalGridView gridView;
+	private Menu menu;
 	private Observable gameModel;
 	private InfoPanel infoPanel;
 
@@ -43,7 +45,7 @@ public class Window extends JFrame implements Observer {
         this.setLayout(new BorderLayout(5, 5));
 
         JMenuBar menuBar = new JMenuBar();
-        menuBar.add(new Menu("Game"));
+        menuBar.add(menu = new Menu("Game"));
         this.add(menuBar, BorderLayout.NORTH);
 
         infoPanel = new InfoPanel();
@@ -124,11 +126,13 @@ public class Window extends JFrame implements Observer {
 		}
 
 		if(this.controller.isLoose()) {
+			infoPanel.getTimer().stop();
 			DialogFrame.alert(this,false);
-			infoPanel.getTimer().stop();
 		} else if(this.controller.isWin()) {
-			DialogFrame.alert(this,true);
 			infoPanel.getTimer().stop();
+			Scores.write(Scores.read().updateScores(DialogFrame.askPseudo(this), infoPanel.getTimer().getTime()));
+//			this.menu.getScoreBoard().update();
+			DialogFrame.alert(this,true);
 		}
 	}
 }
