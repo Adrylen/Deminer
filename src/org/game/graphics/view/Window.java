@@ -69,6 +69,7 @@ public class Window extends JFrame implements Observer {
 		}
 		this.gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
         this.add(this.gridView, BorderLayout.CENTER);
+        this.infoPanel.setSmiley("ʕ•ᴥ•ʔ");
 
         this.setVisible(true);
     }
@@ -127,9 +128,11 @@ public class Window extends JFrame implements Observer {
 
 		if(this.controller.isLoose()) {
 			infoPanel.getTimer().stop();
+			infoPanel.setSmiley("ʕ⁎̯͡⁎ʔ༄");
 			DialogFrame.alert(this,false);
 		} else if(this.controller.isWin()) {
 			infoPanel.getTimer().stop();
+			infoPanel.setSmiley("୧ʕ•̀ᴥ•́ʔ୨");
 			Scores.write(Scores.read().updateScores(DialogFrame.askPseudo(this), infoPanel.getTimer().getTime()));
 //			this.menu.getScoreBoard().update();
 			DialogFrame.alert(this,true);

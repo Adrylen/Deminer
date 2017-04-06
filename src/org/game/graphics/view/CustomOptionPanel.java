@@ -12,8 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -28,6 +31,7 @@ public class CustomOptionPanel extends JPanel{
     private String str;
     private int min;
     private int max;
+    private int secondMax;
     private int value;
     private int minor;
     private int major;
@@ -43,7 +47,8 @@ public class CustomOptionPanel extends JPanel{
         this.setMinor(minor);
         this.setMajor(major);
         this.setStr(str);
-        this.setValue(value);        
+        this.setValue(value);
+        this.setSecondMax(max);
     }
     
     public CustomOptionPanel init(){
@@ -76,7 +81,7 @@ public class CustomOptionPanel extends JPanel{
     }
     
     private void addLabel(){
-        label = new JLabel(str);
+        label = new JLabel(str+" : ");
         addC(this, label, 0, 0, 1, 1, GridBagConstraints.WEST);
     }
     
@@ -84,24 +89,32 @@ public class CustomOptionPanel extends JPanel{
         text = new JTextField(String.valueOf(value),3);
         text.setEnabled(false);
 	text.setHorizontalAlignment(SwingConstants.TRAILING);
-        /*text.getDocument().addDocumentListener(new DocumentListener(){
+        text.getDocument().addDocumentListener(new DocumentListener(){
             @Override
-            public void changedUpdate(DocumentEvent e){
-                ui.setStr(text.getText());
-                ui.setValue(Integer.parseInt(str));
-                slider.setValue(value);
-            }
+            public void changedUpdate(DocumentEvent e){}
             @Override
             public void removeUpdate(DocumentEvent e){
-                
+	            SwingUtilities.invokeLater(() -> {
+	            	try {
+			            if(Integer.parseInt(text.getText()) < min) {
+				            text.setText(min+"");
+			            }
+		            } catch(NumberFormatException nb) {
+			            text.setText(min+"");
+		            }
+	                slider.setValue(Integer.parseInt(text.getText()));
+	            });
             }
             @Override
             public void insertUpdate(DocumentEvent e){
-                ui.setStr(text.getText());
-                ui.setValue(Integer.parseInt(str));
-                slider.setValue(value);
+	            SwingUtilities.invokeLater(() -> {
+		            if(Integer.parseInt(text.getText()) > max) {
+			            text.setText(max+"");
+		            }
+	                slider.setValue(Integer.parseInt(text.getText()));
+	            });
             }
-        });*/
+        });
         addC(this, text, 1, 1, 1, 1, GridBagConstraints.EAST);
     }
     
@@ -242,5 +255,19 @@ public class CustomOptionPanel extends JPanel{
      */
     public void setText(JTextField text) {
         this.text = text;
+    }
+
+    /**
+     * @return the secondMax
+     */
+    public int getSecondMax() {
+        return secondMax;
+    }
+
+    /**
+     * @param secondMax the secondMax to set
+     */
+    public void setSecondMax(int secondMax) {
+        this.secondMax = secondMax;
     }
 }

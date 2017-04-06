@@ -23,9 +23,9 @@ public class CustomGamePanel extends JPanel {
     
     public CustomGamePanel(){
         this.setLayout(new GridLayout(3,3));
-        panelR= new CustomOptionPanel("Rows : ", 9, 24, getRows(), 1, 2);
-        panelC= new CustomOptionPanel("Columns : ", 9, 30, getColumns(), 2, 4);
-        panelM= new CustomOptionPanel("Mines : ", 10, 145, getMines(), 13, 26);
+        panelR= new CustomOptionPanel("Rows", 9, 24, getRows(), 1, 2);
+        panelC= new CustomOptionPanel("Columns", 9, 30, getColumns(), 2, 4);
+        panelM= new CustomOptionPanel("Mines", 10, 145, getMines(), 13, 26);
         this.add(panelR.init());
         this.add(panelC.init());
         this.add(panelM.init());

@@ -46,7 +46,7 @@ public class Scores implements Serializable {
 			}
 		}
 		if(id < LENGTH-1) {
-			for(int i = id+1; i <= LENGTH; ++i) {
+			for(int i = id+1; i < LENGTH; ++i) {
 				String str = pseudos[i];
 				int tmp = scores[i];
 

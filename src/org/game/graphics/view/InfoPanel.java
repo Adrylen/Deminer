@@ -52,7 +52,7 @@ public class InfoPanel extends JPanel implements Observer {
 	}
 
 	private void addSmiley() {
-		smiley = new JButton(":)");
+		smiley = new JButton();
 		smiley.addMouseListener(new MouseEventListener(null));
 
 		this.placement.weightx = 0.005;
@@ -82,6 +82,10 @@ public class InfoPanel extends JPanel implements Observer {
 
 	public Timer getTimer() {
 		return timer;
+	}
+
+	public void setSmiley(String str) {
+		smiley.setText(str);
 	}
 
 	@Override
