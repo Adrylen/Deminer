@@ -6,7 +6,7 @@
 package org.game.graphics.view;
 
 
-import javax.swing.JInternalFrame;
+import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
  *
  * @author kieffersarah
  */
-public class NewGameFrame extends JInternalFrame{
+public class NewGameFrame extends JFrame{
     private NewGamePanel game = new NewGamePanel();
     private NewGameFrame ui = this;
 
@@ -27,7 +27,8 @@ public class NewGameFrame extends JInternalFrame{
     public void main(){
         this.setLayout(new BorderLayout(0, 0));
         this.add(getGame(), BorderLayout.CENTER);
-        
+        this.setSize(350, 500);
+        this.setResizable(false);
         this.getGame().getCancel().addMouseListener(new MouseAdapter(){
             @Override 
                 public void mouseClicked(MouseEvent e){

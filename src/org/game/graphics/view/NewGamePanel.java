@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package org.game.graphics.view;
-
-import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import javax.swing.JComponent;
 
 /**
  *
@@ -43,17 +45,33 @@ public class NewGamePanel extends JPanel{
         getGroup().add(getIntermediate());
         getGroup().add(getExpert());
         getGroup().add(getCust());
-        getChoice().add(getSelect());
-        getChoice().add(getBeginner());
-        getChoice().add(getIntermediate());
-        getChoice().add(getExpert());
-        getChoice().add(getCust());
-        this.setLayout(new GridLayout(4,1));
-        this.add(getChoice());
-        this.add(getCustom());
-        this.add(getStart());
-        this.add(getCancel());
 
+        this.setLayout(new GridBagLayout());
+        addC(getChoice(), getSelect(), 0, 0, 1, 1, GridBagConstraints.WEST);
+        addC(getChoice(), getBeginner(), 0, 1, 1, 1, GridBagConstraints.WEST);
+        addC(getChoice(), getIntermediate(), 0, 2, 1, 1, GridBagConstraints.WEST);
+        addC(getChoice(), getExpert(), 0, 3, 1, 1, GridBagConstraints.WEST);
+        addC(getChoice(), getCust(), 0, 4, 1, 1, GridBagConstraints.WEST);
+        addC(this, getChoice(), 0, 0, 1, 1, GridBagConstraints.CENTER);
+        addC(this, getCustom(), 0, 1, 1, 1, GridBagConstraints.CENTER);
+        addC(this, getStart(), 0, 2, 1, 1, GridBagConstraints.CENTER);
+        addC(this, getCancel(), 0, 3, 1, 1, GridBagConstraints.CENTER);
+
+
+    }
+    
+    public void addC(JPanel p, JComponent c, int x, int y, int width, int height, int anchor){
+        GridBagConstraints placement = new GridBagConstraints();
+        placement.weightx = 100.0;
+        placement.weighty = 100.0;
+	placement.gridx = x;
+	placement.gridy = y;
+        placement.gridwidth = width;
+        placement.gridheight = height;
+        placement.insets = new Insets(5,5,5,5);
+        placement.anchor = anchor;
+        placement.fill = GridBagConstraints.NONE;
+	p.add(c, placement);
     }
     
     public void create(){

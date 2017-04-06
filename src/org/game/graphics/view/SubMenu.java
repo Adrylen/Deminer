@@ -37,12 +37,11 @@ public class SubMenu extends JMenu {
            @Override
            public void actionPerformed(ActionEvent e){
                if(custom == null){
-                   custom = new NewGameFrame("custom");
-               WindowDeminer.getWindow().getContentPane().add(custom);
-               custom.main();
+                    custom = new NewGameFrame("custom");
+                    custom.main();
                }
                else{
-                   custom.setVisible(true);
+                    custom.setVisible(true);
                }
            }
        }));

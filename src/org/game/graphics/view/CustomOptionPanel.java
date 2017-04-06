@@ -8,13 +8,18 @@ package org.game.graphics.view;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import org.game.controller.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -31,8 +36,8 @@ public class CustomOptionPanel extends JPanel{
     private JSlider slider = null;
     private JLabel label = null;
     private JTextField text = null;
-    private GridBagConstraints placement;
     public Dimension dim= new Dimension(30,20);
+    private CustomOptionPanel ui = this;
     
     public CustomOptionPanel(String str, int min, int max, int value, int minor, int major){
         this.setMin(min);
@@ -45,9 +50,6 @@ public class CustomOptionPanel extends JPanel{
     
     public CustomOptionPanel init(){
         
-        this.placement = new GridBagConstraints();
-	this.placement.ipadx = 0;
-	this.placement.fill = GridBagConstraints.HORIZONTAL;
 	this.setLayout(new GridBagLayout());
 	this.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0)); 
         this.addLabel();
@@ -63,33 +65,60 @@ public class CustomOptionPanel extends JPanel{
         slider.setPaintLabels(true);
         slider.setMinorTickSpacing(minor);
         slider.setMajorTickSpacing(major);
-        slider.setEnabled(false);  
-        this.placement.weightx = 0.005;
-	this.placement.gridx = 1;
-	this.placement.gridy = 0;
-	this.add(slider, this.placement);
+        slider.setEnabled(false);
+        slider.addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e){
+                ui.setValue(slider.getValue());
+                ui.setStr(String.valueOf(value));
+                text.setText(str);
+            }
+        });
+        addC(this, slider, 0, 1, 1, 1, GridBagConstraints.WEST);
     }
     
     private void addLabel(){
         label = new JLabel(str);
-        label.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-	this.placement.weightx = 0.5;
-	this.placement.gridx = 0;
-	this.placement.gridy = 0;
-	this.add(label, this.placement);
+        addC(this, label, 0, 0, 1, 1, GridBagConstraints.WEST);
     }
     
     private void addText(){
         text = new JTextField(String.valueOf(value),3);
         text.setEnabled(false);
 	text.setHorizontalAlignment(SwingConstants.TRAILING);
-	text.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
-
-	this.placement.weightx = 0.5;
-	this.placement.gridx = 2;
-	this.placement.gridy = 0;
-        text.setPreferredSize(dim);
-	this.add(text, this.placement);
+        /*text.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void changedUpdate(DocumentEvent e){
+                ui.setStr(text.getText());
+                ui.setValue(Integer.parseInt(str));
+                slider.setValue(value);
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e){
+                
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e){
+                ui.setStr(text.getText());
+                ui.setValue(Integer.parseInt(str));
+                slider.setValue(value);
+            }
+        });*/
+        addC(this, text, 1, 1, 1, 1, GridBagConstraints.EAST);
+    }
+    
+    public void addC(JPanel p, JComponent c, int x, int y, int width, int height, int anchor){
+        GridBagConstraints placement = new GridBagConstraints();
+        placement.weightx = 100.0;
+        placement.weighty = 100.0;
+	placement.gridx = x;
+	placement.gridy = y;
+        placement.gridwidth = width;
+        placement.gridheight = height;
+        placement.insets = new Insets(5,5,5,5);
+        placement.anchor = anchor;
+        placement.fill = GridBagConstraints.NONE;
+	p.add(c, placement);
     }
     /**
      * @return the str
@@ -215,19 +244,5 @@ public class CustomOptionPanel extends JPanel{
      */
     public void setText(JTextField text) {
         this.text = text;
-    }
-
-    /**
-     * @return the placement
-     */
-    public GridBagConstraints getPlacement() {
-        return placement;
-    }
-
-    /**
-     * @param placement the placement to set
-     */
-    public void setPlacement(GridBagConstraints placement) {
-        this.placement = placement;
     }
 }
