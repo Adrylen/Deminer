@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view;
 
 import org.game.controller.GameController;
@@ -13,18 +8,15 @@ import org.game.graphics.view.menu.Menu;
 import org.game.models.GameGrid;
 import org.game.models.Scores;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.Observable;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+
 import java.util.Observer;
 
-/**
- *
- * @author kieffersarah
- */
 public class Window extends JFrame implements Observer {
 	private GameController controller;
 	private GraphicalGridView gridView;
@@ -100,7 +92,6 @@ public class Window extends JFrame implements Observer {
 			infoPanel.getTimer().stop();
 			infoPanel.setSmiley("୧ʕ•̀ᴥ•́ʔ୨");
 			Scores.write(Scores.read().updateScores(DialogFrame.askPseudo(this), infoPanel.getTimer().getTime()));
-//			this.menu.getScoreBoard().update();
 			DialogFrame.alert(this,true);
 		}
 	}

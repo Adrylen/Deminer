@@ -1,24 +1,18 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.graphics.view
- *   Created by adrylen on 04/04/17.
-*/
-
 package org.game.graphics.view.panel;
 
 import org.game.controller.Timer;
 import org.game.graphics.events.MouseEventListener;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.util.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.util.Observable;
+
 import java.util.Observer;
+import javax.swing.SwingConstants;
 
 public class InfoPanel extends JPanel implements Observer {
 	private GridBagConstraints placement;

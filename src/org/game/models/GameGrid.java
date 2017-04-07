@@ -1,11 +1,3 @@
-/*
-    Java Project
-    Deminer
-    Package : org.game.models
-
-    Created by adrylen on 08/03/17.
-*/
-
 package org.game.models;
 
 import java.util.Observable;

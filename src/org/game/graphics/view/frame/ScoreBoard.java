@@ -1,19 +1,12 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.graphics.view
- *   Created by adrylen on 05/04/17.
-*/
-
 package org.game.graphics.view.frame;
 
 import org.game.models.Scores;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class ScoreBoard extends JFrame {
 	private GridBagConstraints placement;
@@ -44,16 +37,6 @@ public class ScoreBoard extends JFrame {
 
 	public void main() {
 		this.addScores();
-//
-//		this.placement.gridy = y;
-//		this.placement.weighty = 0.2;
-//		this.add(new JButton(new AbstractAction("Close") {
-//			@Override
-//			public void actionPerformed(ActionEvent actionEvent) {
-//				SB.dispose();
-//			}
-//		}), this.placement);
-
 		this.setVisible(true);
 	}
 }

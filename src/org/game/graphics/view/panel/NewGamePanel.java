@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.panel;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ItemEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ItemEvent;
 
-/**
- *
- * @author kieffersarah
- */
 public class NewGamePanel extends JPanel{
     
     private CustomGamePanel custom = new CustomGamePanel();
@@ -113,74 +105,43 @@ public class NewGamePanel extends JPanel{
 	        getCustom().getPanelM().setMax(i);
         }
     }
-    
 
-    /**
-     * @return the custom
-     */
     public CustomGamePanel getCustom() {
         return custom;
     }
 
-    /**
-     * @return the choice
-     */
     private JPanel getChoice() {
         return choice;
     }
 
-    /**
-     * @return the beginner
-     */
     public JRadioButton getBeginner() {
         return beginner;
     }
 
-    /**
-     * @return the intermediate
-     */
     public JRadioButton getIntermediate() {
         return intermediate;
     }
 
-    /**
-     * @return the expert
-     */
     public JRadioButton getExpert() {
         return expert;
     }
 
-    /**
-     * @return the cust
-     */
     public JRadioButton getCust() {
         return cust;
     }
 
-    /**
-     * @return the select
-     */
     private JLabel getSelect() {
         return select;
     }
 
-    /**
-     * @return the group
-     */
     private ButtonGroup getGroup() {
         return group;
     }
 
-    /**
-     * @return the start
-     */
     public JButton getStart() {
         return start;
     }
 
-    /**
-     * @return the cancel
-     */
     public JButton getCancel() {
         return cancel;
     }

@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.panel;
 
 import org.game.controller.GameController;
 import org.game.graphics.view.component.GraphicalCellView;
 import org.game.models.GameGrid;
 
-import javax.swing.JPanel;
 import java.awt.GridLayout;
+import javax.swing.JPanel;
 
-/**
- *
- * @author kieffersarah
- */
 public class GraphicalGridView extends JPanel{
     private GameGrid grid;
 
@@ -26,7 +17,6 @@ public class GraphicalGridView extends JPanel{
         this.setLayout(new GridLayout(rows, cols));
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-//                Case gameCase=grid.getCase(i, j);
                 this.add(new GraphicalCellView(grid.getCase(i,j), controller));
             }
         }

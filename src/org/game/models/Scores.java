@@ -1,10 +1,3 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.models
- *   Created by adrylen on 06/04/17.
-*/
-
 package org.game.models;
 
 import java.io.FileInputStream;
@@ -13,8 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Arrays;
+
+import java.io.Serializable;
 
 public class Scores implements Serializable {
 	private static final String filename = "assets/scores/scores.ser";

@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.console.vue;
 
 import org.game.models.GameGrid;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 
-/**
- *
- * @author kieffersarah
- */
+import java.util.Observer;
+
 public class Console implements Observer {
 	private Observable model = null;
 	private boolean debugMode = true;

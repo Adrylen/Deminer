@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.menu;
 
 import org.game.graphics.engine.WindowDeminer;
 import org.game.graphics.view.frame.NewGameFrame;
 import org.game.models.NewGame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 
-/**
- *
- * @author kieffersarah
- */
 class SubMenu extends JMenu {
     private NewGameFrame custom = null;
     

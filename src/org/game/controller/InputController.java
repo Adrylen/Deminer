@@ -1,11 +1,3 @@
-/*
-    Java Project
-    Deminer
-    Package : org.game.controller
-
-    Created by adrylen on 10/03/17.
-*/
-
 package org.game.controller;
 
 class InputController {

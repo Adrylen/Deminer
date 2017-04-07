@@ -1,27 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.component;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.FocusEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
-/**
- *
- * @author kieffersarah
- */
+import java.awt.event.FocusListener;
+import javax.swing.SwingConstants;
+
 public class CustomOptionPanel extends JPanel{
     
     private String str;
@@ -113,93 +105,54 @@ public class CustomOptionPanel extends JPanel{
 	p.add(c, placement);
     }
 
-    /**
-     * @param str the str to set
-     */
     public void setStr(String str) {
         this.str = str;
     }
 
-    /**
-     * @return the min
-     */
     private int getMin() {
         return min;
     }
 
-    /**
-     * @param min the min to set
-     */
     private void setMin(int min) {
         this.min = min;
     }
 
-    /**
-     * @return the max
-     */
     public int getMax() {
         return max;
     }
 
-    /**
-     * @param max the max to set
-     */
     public void setMax(int max) {
         this.max = max;
     }
 
-    /**
-     * @return the value
-     */
     private int getValue() {
         return value;
     }
 
-    /**
-     * @param value the value to set
-     */
     private void setValue(int value) {
         this.value = value;
     }
 
-    /**
-     * @param minor the minor to set
-     */
     private void setMinor(int minor) {
         this.minor = minor;
     }
 
-    /**
-     * @param major the major to set
-     */
     private void setMajor(int major) {
         this.major = major;
     }
 
-    /**
-     * @return the slider
-     */
     public JSlider getSlider() {
         return slider;
     }
 
-    /**
-     * @return the text
-     */
     public JTextField getText() {
         return text;
     }
 
-    /**
-     * @return the secondMax
-     */
     public int getSecondMax() {
         return secondMax;
     }
 
-    /**
-     * @param secondMax the secondMax to set
-     */
     public void setSecondMax(int secondMax) {
         this.secondMax = secondMax;
     }

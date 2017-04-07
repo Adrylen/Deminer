@@ -1,15 +1,9 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.controller
- *   Created by adrylen on 04/04/17.
-*/
-
 package org.game.controller;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.TimerTask;
+
+import java.util.Observer;
 
 public class Timer extends Observable {
 	private java.util.Timer timer;

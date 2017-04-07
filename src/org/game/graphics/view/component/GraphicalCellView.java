@@ -1,34 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.component;
 
 import org.game.controller.GameController;
 import org.game.graphics.events.MouseEventListener;
 import org.game.models.Case;
 
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
-/**
- *
- * @author kieffersarah
- */
 public class GraphicalCellView extends JButton {
     private Case gameCase;
 
     public GraphicalCellView(Case gameCase, GameController controller){
-        super(/*new StringBuilder().append(gameCase.getSymbol()).toString()*/);
+        super();
         this.gameCase = gameCase;
 
         this.changeIcon();
@@ -71,15 +62,12 @@ public class GraphicalCellView extends JButton {
 	    } catch (IOException e) {
 		    e.printStackTrace();
 	    }
-//    	if(this.gameCase.isMined() && !this.gameCase.isHidden()) {
-//
-//	    }
         if((this.gameCase.getSymbol() > '0' && this.gameCase.getSymbol() <= '9') || (!this.gameCase.isHidden() && !this.gameCase.isMined() && !this.gameCase.hasNeighbors())) {
         	this.setEnabled(false);
         }
     }
 
-    // © Copyright BEQUART Valentin
+    // ©Copyright BEQUART Valentin
 	@Override
 	public void paintComponent(Graphics g)
 	{

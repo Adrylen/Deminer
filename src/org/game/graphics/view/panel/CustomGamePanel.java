@@ -7,19 +7,14 @@ package org.game.graphics.view.panel;
 
 import org.game.graphics.view.component.CustomOptionPanel;
 
-import javax.swing.JPanel;
 import java.awt.GridLayout;
+import javax.swing.JPanel;
 
-/**
- *
- * @author kieffersarah
- */
 public class CustomGamePanel extends JPanel {
     private CustomOptionPanel panelR= null;
     private CustomOptionPanel panelC= null;
     private CustomOptionPanel panelM= null;
 
-    
     CustomGamePanel(){
         this.setLayout(new GridLayout(3,3));
         panelR= new CustomOptionPanel("Rows", 9, 24, 9, 1, 2);
@@ -30,23 +25,14 @@ public class CustomGamePanel extends JPanel {
         this.add(panelM.init());
     }
 
-    /**
-     * @return the panelR
-     */
     public CustomOptionPanel getPanelR() {
         return panelR;
     }
 
-    /**
-     * @return the panelC
-     */
     public CustomOptionPanel getPanelC() {
         return panelC;
     }
 
-    /**
-     * @return the panelM
-     */
     public CustomOptionPanel getPanelM() {
         return panelM;
     }

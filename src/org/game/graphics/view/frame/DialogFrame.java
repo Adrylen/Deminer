@@ -1,10 +1,3 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.graphics.view
- *   Created by adrylen on 05/04/17.
-*/
-
 package org.game.graphics.view.frame;
 
 import org.game.graphics.engine.WindowDeminer;

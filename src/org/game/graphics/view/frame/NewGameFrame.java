@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.game.graphics.view.frame;
 
 
@@ -10,15 +5,11 @@ import org.game.graphics.engine.WindowDeminer;
 import org.game.graphics.view.panel.NewGamePanel;
 import org.game.models.NewGame;
 
-import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
 
-/**
- *
- * @author kieffersarah
- */
 public class NewGameFrame extends JFrame{
     private NewGamePanel game = new NewGamePanel();
     private NewGameFrame ui = this;
@@ -26,8 +17,7 @@ public class NewGameFrame extends JFrame{
     public NewGameFrame(String str){
         super(str);
     }
-    
-    
+
     public void main(){
         this.setLayout(new BorderLayout(0, 0));
         this.add(getGame(), BorderLayout.CENTER);
@@ -62,23 +52,14 @@ public class NewGameFrame extends JFrame{
         this.setVisible(true);
     }
 
-    /**
-     * @return the game
-     */
     public NewGamePanel getGame() {
         return game;
     }
 
-    /**
-     * @param game the game to set
-     */
     public void setGame(NewGamePanel game) {
         this.game = game;
     }
 
-    /**
-     * @return the ui
-     */
     private NewGameFrame getUi() {
         return ui;
     }

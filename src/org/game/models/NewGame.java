@@ -1,10 +1,3 @@
-/*
- *   Java Project
- *   Project
- *   Package : org.game.models
- *   Created by adrylen on 29/03/17.
-*/
-
 package org.game.models;
 
 public enum NewGame {

@@ -1,11 +1,3 @@
-/*
-    Java Project
-    Deminer
-    Package : org.game.graphics
-
-    Created by adrylen on 10/03/17.
-*/
-
 package org.game.graphics.engine;
 
 import org.game.controller.GameController;

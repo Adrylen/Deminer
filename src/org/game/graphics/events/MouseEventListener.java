@@ -1,21 +1,13 @@
-/*
-    Java Project
-    Deminer
-    Package : org.game.graphics.events
-
-    Created by adrylen on 10/03/17.
-*/
-
 package org.game.graphics.events;
 
 import org.game.controller.GameController;
 import org.game.graphics.engine.WindowDeminer;
 import org.game.graphics.view.component.GraphicalCellView;
 
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 
 public class MouseEventListener extends MouseAdapter {
