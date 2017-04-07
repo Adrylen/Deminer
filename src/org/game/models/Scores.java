@@ -1,13 +1,32 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.models;
 
+/* Java Imports */
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Arrays;
 
+/* Exceptions Imports */
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+/* Interfaces Imports */
 import java.io.Serializable;
 
 /* Here we treat the high scores and serialize them */

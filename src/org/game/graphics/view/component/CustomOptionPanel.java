@@ -1,9 +1,27 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.component;
 
+/* Java Imports */
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.FocusEvent;
+
+/* Swing Imports */
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -11,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 
+/* Interface Imports */
 import java.awt.event.FocusListener;
 import javax.swing.SwingConstants;
 

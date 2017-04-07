@@ -1,5 +1,21 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.models;
 
+/* Java Imports */
 import java.util.Observable;
 
 /* This is the grid of the Deminor.

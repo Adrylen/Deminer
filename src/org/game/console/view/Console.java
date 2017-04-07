@@ -1,10 +1,28 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.console.view;
 
+/* Project Imports */
 import org.game.models.GameGrid;
 
+/* Java Imports */
 import java.util.Observable;
 import java.util.Scanner;
 
+/* Interface Imports */
 import java.util.Observer;
 
 /* This is the view of the Terminal Deminor */

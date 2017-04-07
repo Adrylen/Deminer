@@ -1,16 +1,36 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.panel;
 
+/* Project Imports */
 import org.game.controller.Timer;
 import org.game.graphics.events.MouseEventListener;
 
+/* Java Imports */
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Observable;
+
+/* Swing Imports */
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/* Interface Imports */
 import java.util.Observer;
 import javax.swing.SwingConstants;
 

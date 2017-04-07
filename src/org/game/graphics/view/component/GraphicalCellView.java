@@ -1,19 +1,40 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.component;
 
+/* Project Imports */
 import org.game.controller.GameController;
 import org.game.graphics.events.MouseEventListener;
 import org.game.models.Case;
 
+/* Java Imports */
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
-import java.io.IOException;
+
+/* Swing Imports */
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+/* Exception Imports */
+import java.io.IOException;
 
 /* This part is for the appearance of the buttons */
 public class GraphicalCellView extends JButton {

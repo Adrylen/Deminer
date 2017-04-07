@@ -1,5 +1,21 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view;
 
+/* Project Imports */
 import org.game.controller.GameController;
 import org.game.graphics.view.frame.DialogFrame;
 import org.game.graphics.view.panel.GraphicalGridView;
@@ -8,13 +24,17 @@ import org.game.graphics.view.menu.Menu;
 import org.game.models.GameGrid;
 import org.game.models.Scores;
 
+/* Java Imports */
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.Observable;
+
+/* Swing Imports */
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 
+/* Interface Imports */
 import java.util.Observer;
 
 /* This is the main window of the Deminor */

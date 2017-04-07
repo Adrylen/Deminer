@@ -1,13 +1,31 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.frame;
 
-
+/* Project Imports */
 import org.game.graphics.engine.WindowDeminer;
 import org.game.graphics.view.panel.NewGamePanel;
 import org.game.models.NewGame;
 
+/* Java Imports */
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+/* Swing Imports */
 import javax.swing.JFrame;
 
 /* This is the New Game menu. The player can custom

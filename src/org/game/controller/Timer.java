@@ -1,8 +1,25 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.controller;
 
+/* Java Imports */
 import java.util.Observable;
 import java.util.TimerTask;
 
+/* Interface Imports */
 import java.util.Observer;
 
 /* Here we control the timer while the game

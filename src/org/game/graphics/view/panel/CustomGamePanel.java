@@ -1,13 +1,27 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.panel;
 
+/* Project Imports */
 import org.game.graphics.view.component.CustomOptionPanel;
 
+/* Java Imports */
 import java.awt.GridLayout;
+
+/* Swing Imports */
 import javax.swing.JPanel;
 
 /* This is a subsection of the "New" game menu */

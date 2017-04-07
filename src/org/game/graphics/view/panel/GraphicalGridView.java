@@ -1,10 +1,29 @@
+/**
+ * +===========================================+
+ * |      ISEN CIR3 JAVA PROJECT DEMINOR       |
+ * +-------------------------------------------+
+ * |                  MADE BY                  |
+ * |               KIEFFER Sarah               |
+ * |                     &                     |
+ * |              MARTINEZ Adrien              |
+ * +-------------------------------------------+
+ * |               PUBLISHED ON                |
+ * |               7 APRIL 2017                |
+ * +===========================================+
+ **/
+
+/* Package */
 package org.game.graphics.view.panel;
 
+/* Project Imports */
 import org.game.controller.GameController;
 import org.game.graphics.view.component.GraphicalCellView;
 import org.game.models.GameGrid;
 
+/* Java Imports */
 import java.awt.GridLayout;
+
+/* Swing Imports */
 import javax.swing.JPanel;
 
 /* Here we set the diffent buttons of the grid
