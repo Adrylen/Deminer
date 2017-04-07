@@ -14,6 +14,12 @@ import javax.swing.JPanel;
 import java.util.Observer;
 import javax.swing.SwingConstants;
 
+/* This panel is at the bottom of the window.
+ * It gives to the player the timer but also
+ * the number of remaining mines.
+ * It permits also to restart a party if the player
+ * clicks on the bear smiley.
+*/
 public class InfoPanel extends JPanel implements Observer {
 	private GridBagConstraints placement;
 	private JLabel mines;

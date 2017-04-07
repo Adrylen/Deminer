@@ -1,4 +1,4 @@
-package org.game.console.vue;
+package org.game.console.view;
 
 import org.game.models.GameGrid;
 
@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import java.util.Observer;
 
+/* This is the view of the Terminal Deminor */
 public class Console implements Observer {
 	private Observable model = null;
 	private boolean debugMode = true;

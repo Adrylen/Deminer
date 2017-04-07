@@ -10,6 +10,7 @@ import org.game.graphics.view.component.CustomOptionPanel;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 
+/* This is a subsection of the "New" game menu */
 public class CustomGamePanel extends JPanel {
     private CustomOptionPanel panelR= null;
     private CustomOptionPanel panelC= null;

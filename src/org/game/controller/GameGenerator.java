@@ -4,6 +4,7 @@ import org.game.models.GameGrid;
 
 import java.util.Random;
 
+/* Here we generate the Deminor model */
 class GameGenerator {
 	private static void addNeighbor(GameGrid gameGrid, int i, int j) {
 		for(int a = i == 0 ? i : i-1; a <= (i == gameGrid.getRows()-1 ? i : i+1); ++a) {

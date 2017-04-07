@@ -3,6 +3,10 @@ package org.game.controller;
 import org.game.models.Case;
 import org.game.models.GameGrid;
 
+/* Here we check if the player win or loose,
+ * how many mines there are around a case,
+ * and we update the model
+*/
 public class GameController {
 	private GameGrid gameModel;
 

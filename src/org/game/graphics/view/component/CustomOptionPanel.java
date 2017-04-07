@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import java.awt.event.FocusListener;
 import javax.swing.SwingConstants;
 
+/* Here we create and control one element of the subsection
+ * The listeners are used to link up the different elements
+*/
 public class CustomOptionPanel extends JPanel{
     
     private String str;

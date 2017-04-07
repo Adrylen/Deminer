@@ -1,5 +1,9 @@
 package org.game.models;
 
+/* Each Case contains a lot of informations
+ * about the state of a them.
+ * Those are the unseen face of the deminor.
+*/
 public class Case {
 	private boolean hidden;
 	private boolean mined;

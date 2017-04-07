@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 import java.io.Serializable;
 
+/* Here we treat the high scores and serialize them */
 public class Scores implements Serializable {
 	private static final String filename = "assets/scores/scores.ser";
 	public static final int LENGTH = 5;

@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+/* This is the main menu */
 public class Menu extends JMenu{
 	private ScoreBoard scoreBoard;
 	public Menu(String str){

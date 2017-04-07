@@ -11,6 +11,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+/* This permits to the player to change directly
+ * the level of the Deminor, to access to the New
+ * Game menu or just to restart a new game.
+*/
 class SubMenu extends JMenu {
     private NewGameFrame custom = null;
     

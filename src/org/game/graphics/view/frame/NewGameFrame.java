@@ -10,6 +10,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
+/* This is the New Game menu. The player can custom
+ * his new game or just choose a predifined new game.
+*/
 public class NewGameFrame extends JFrame{
     private NewGamePanel game = new NewGamePanel();
     private NewGameFrame ui = this;

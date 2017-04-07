@@ -1,9 +1,10 @@
 package org.game.console.engine;
 
-import org.game.console.vue.Console;
+import org.game.console.view.Console;
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
 
+// TODO Comments
 public class Deminer {
 	private Console view;
 	private GameGrid gameModel;

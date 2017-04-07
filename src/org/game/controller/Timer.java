@@ -5,6 +5,10 @@ import java.util.TimerTask;
 
 import java.util.Observer;
 
+/* Here we control the timer while the game
+ * is running, and we fix the score of
+ * the player if he wins.
+*/
 public class Timer extends Observable {
 	private java.util.Timer timer;
 

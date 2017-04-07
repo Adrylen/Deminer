@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/* This part is for the appearance of the buttons */
 public class GraphicalCellView extends JButton {
     private Case gameCase;
 

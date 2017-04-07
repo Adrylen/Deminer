@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
-
+/* Here we check the Mouse events to update the controller */
 public class MouseEventListener extends MouseAdapter {
 	private final GameController controller;
 

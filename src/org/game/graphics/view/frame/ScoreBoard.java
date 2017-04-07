@@ -8,6 +8,13 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/* This permits to the player to see
+ * all the high scores of the Deminor.
+ * All difficulties are linked, so only
+ * Beginner time can actually be saved.
+ * (But if you're not a great player,
+ * may be an Expert can win faster than you.
+*/
 public class ScoreBoard extends JFrame {
 	private GridBagConstraints placement;
 	private JLabel[] highScores;

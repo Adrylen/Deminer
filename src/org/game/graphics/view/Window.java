@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 
 import java.util.Observer;
 
+/* This is the main window of the Deminor */
 public class Window extends JFrame implements Observer {
 	private GameController controller;
 	private GraphicalGridView gridView;

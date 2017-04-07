@@ -5,6 +5,10 @@ import org.game.graphics.engine.WindowDeminer;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/* This dialog frame appears when the player loose
+ * or win and permits him to enter his pseudo,
+ * restart or quit.
+*/
 public class DialogFrame {
 	private static final int RESTART_OPTION = 0;
 	private static final int QUIT_OPTION = 1;

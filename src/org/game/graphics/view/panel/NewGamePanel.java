@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+/* Here we set the different elements of the new game menu */
 public class NewGamePanel extends JPanel{
     
     private CustomGamePanel custom = new CustomGamePanel();

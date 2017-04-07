@@ -1,5 +1,6 @@
 package org.game.models;
 
+/* This is "New game" pattern */
 public enum NewGame {
 	BEGINNER(9,9,10),
 	INTERMEDIATE(16,16,40),

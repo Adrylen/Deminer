@@ -5,6 +5,7 @@ import org.game.graphics.view.Window;
 import org.game.models.GameGrid;
 import org.game.models.NewGame;
 
+/* Here we initialize the graphical version */
 public class WindowDeminer {
 	private static NewGame actualLevel;
 	private static Window window;

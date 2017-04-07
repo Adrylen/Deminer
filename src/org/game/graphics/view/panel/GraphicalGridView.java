@@ -7,6 +7,10 @@ import org.game.models.GameGrid;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 
+/* Here we set the diffent buttons of the grid
+ * at the right place thanks to a GridLayout.
+ * Each button reffers to a case from the model
+*/
 public class GraphicalGridView extends JPanel{
     private GameGrid grid;
 
