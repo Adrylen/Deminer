@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.panel;
+
+import org.game.graphics.view.component.CustomOptionPanel;
 
 import javax.swing.JPanel;
 import java.awt.GridLayout;

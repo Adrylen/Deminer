@@ -31,10 +31,9 @@ public class GameGrid extends Observable {
 		return this;
 	}
 
-	public GameGrid setMines(int mines) {
+	public void setMines(int mines) {
 		this.mines = mines;
 		this.percent = (int)(this.mines * 100.0 / this.getSize());
-		return this;
 	}
 
 	public int getRows() {
@@ -53,7 +52,7 @@ public class GameGrid extends Observable {
 		return this.mines;
 	}
 
-	public int getSize() {
+	private int getSize() {
 		return this.grid.length * this.grid[0].length;
 	}
 

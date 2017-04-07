@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.menu;
+
+import org.game.graphics.view.frame.ScoreBoard;
 
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
@@ -21,14 +23,14 @@ public class Menu extends JMenu{
 		this.main();
 	}
 
-	public void main(){
-		createSubMenu("New");
+	private void main(){
+		createSubMenu();
 		createNewElement("High Scores");
 		createNewElement("Quit");
 	}
 
-	private void createSubMenu(String str){
-		this.add(new SubMenu(str));
+	private void createSubMenu(){
+		this.add(new SubMenu("New"));
 	}
 
 	private void createNewElement(String str){
@@ -59,9 +61,5 @@ public class Menu extends JMenu{
 				}
 			}));
 		}
-	}
-
-	public ScoreBoard getScoreBoard() {
-		return scoreBoard;
 	}
 }

@@ -5,7 +5,7 @@
  *   Created by adrylen on 05/04/17.
 */
 
-package org.game.graphics.view;
+package org.game.graphics.view.frame;
 
 import org.game.models.Scores;
 

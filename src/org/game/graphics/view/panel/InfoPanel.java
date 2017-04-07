@@ -5,7 +5,7 @@
  *   Created by adrylen on 04/04/17.
 */
 
-package org.game.graphics.view;
+package org.game.graphics.view.panel;
 
 import org.game.controller.Timer;
 import org.game.graphics.events.MouseEventListener;

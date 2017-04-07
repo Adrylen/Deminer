@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.menu;
 
-import org.game.graphics.controller.WindowDeminer;
+import org.game.graphics.engine.WindowDeminer;
+import org.game.graphics.view.frame.NewGameFrame;
 import org.game.models.NewGame;
 
 import javax.swing.AbstractAction;
@@ -19,23 +20,23 @@ import java.awt.event.KeyEvent;
  *
  * @author kieffersarah
  */
-public class SubMenu extends JMenu {
+class SubMenu extends JMenu {
     private NewGameFrame custom = null;
     
-    public SubMenu(String str){
+    SubMenu(String str){
         super(str);
         this.main();
     }
     
-    public void main(){
+    private void main(){
         this.createNewLevel("Beginner");
         this.createNewLevel("Intermediate");
         this.createNewLevel("Expert");
-        this.createCustomMenu("Custom");
+        this.createCustomMenu();
     }
     
-    private void createCustomMenu(String str){
-       this.add(new JMenuItem(new AbstractAction(str){
+    private void createCustomMenu(){
+       this.add(new JMenuItem(new AbstractAction("Custom"){
            @Override
            public void actionPerformed(ActionEvent e){
                if(custom == null){

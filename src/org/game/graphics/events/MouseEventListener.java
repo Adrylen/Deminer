@@ -9,8 +9,8 @@
 package org.game.graphics.events;
 
 import org.game.controller.GameController;
-import org.game.graphics.controller.WindowDeminer;
-import org.game.graphics.view.GraphicalCellView;
+import org.game.graphics.engine.WindowDeminer;
+import org.game.graphics.view.component.GraphicalCellView;
 
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
@@ -31,8 +31,10 @@ public class MouseEventListener extends MouseAdapter {
 			WindowDeminer.create(WindowDeminer.getActualLevel());
 		} else {
 			if (((JButton) e.getSource()).isEnabled()) {
-				boolean show = (SwingUtilities.isLeftMouseButton(e)) ? true : false;
-				this.controller.updateModel(((GraphicalCellView) e.getSource()).getCase(), show);
+				this.controller.updateModel(
+					((GraphicalCellView) e.getSource()).getCase(),
+					SwingUtilities.isLeftMouseButton(e)
+				);
 			} else {
 				if (e.getClickCount() == 2) {
 					this.controller.showNeighbors(((GraphicalCellView) e.getSource()).getCase());

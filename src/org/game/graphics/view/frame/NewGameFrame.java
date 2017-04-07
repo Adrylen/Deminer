@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.frame;
 
 
-import org.game.graphics.controller.WindowDeminer;
+import org.game.graphics.engine.WindowDeminer;
+import org.game.graphics.view.panel.NewGamePanel;
 import org.game.models.NewGame;
 
 import javax.swing.JFrame;

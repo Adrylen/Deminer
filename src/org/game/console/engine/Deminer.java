@@ -6,18 +6,16 @@
     Created by adrylen on 08/03/17.
 */
 
-package org.game.engine;
+package org.game.console.engine;
 
+import org.game.console.vue.Console;
 import org.game.controller.GameController;
-import org.game.graphics.view.Window;
 import org.game.models.GameGrid;
-import org.game.vue.Console;
 
 public class Deminer {
 	private Console view;
 	private GameGrid gameModel;
 	private GameController controls;
-	private Window window;
 
 	private boolean end;
 
@@ -27,8 +25,6 @@ public class Deminer {
 		this.view = new Console(this.gameModel);
 		this.gameModel.addObserver(this.view);
 
-//		this.window = new Window("Deminer");
-//		this.window.main();
 		this.end = false;
 	}
 

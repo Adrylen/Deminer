@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.component;
 
 import org.game.controller.GameController;
 import org.game.graphics.events.MouseEventListener;
@@ -11,7 +11,6 @@ import org.game.models.Case;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -27,23 +26,20 @@ import java.io.IOException;
  */
 public class GraphicalCellView extends JButton {
     private Case gameCase;
-    private MouseEventListener action;
-    private Icon mine = new ImageIcon("deminer.png");
 
     public GraphicalCellView(Case gameCase, GameController controller){
         super(/*new StringBuilder().append(gameCase.getSymbol()).toString()*/);
         this.gameCase = gameCase;
-        this.action = new MouseEventListener(controller);
 
         this.changeIcon();
-        this.addMouseListener(action);
+        this.addMouseListener(new MouseEventListener(controller));
     }
 
     public Case getCase() {
 	    return this.gameCase;
     }
 
-    public Color updateColor() {
+    private Color updateColor() {
     	if(gameCase.isHidden()) {
     		return null;
 	    }

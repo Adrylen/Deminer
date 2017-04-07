@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.game.graphics.view;
+package org.game.graphics.view.panel;
 
 import org.game.controller.GameController;
+import org.game.graphics.view.component.GraphicalCellView;
 import org.game.models.GameGrid;
 
 import javax.swing.JPanel;

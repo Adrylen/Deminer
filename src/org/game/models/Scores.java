@@ -23,7 +23,7 @@ public class Scores implements Serializable {
 	private String[] pseudos;
 	private int[] scores;
 
-	public Scores() {
+	private Scores() {
 		pseudos = new String[5];
 		scores = new int[5];
 		Arrays.fill(scores, Integer.MAX_VALUE);

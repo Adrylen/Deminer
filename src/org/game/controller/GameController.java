@@ -19,8 +19,6 @@ public class GameController {
 	private boolean loose = false;
 	private boolean quitGame = false;
 
-	private static boolean newEventHappend = false;
-
 	public GameController(GameGrid gameModel) {
 		this.gameModel = gameModel;
 	}
@@ -45,9 +43,9 @@ public class GameController {
 		String[] args = str.split(" ");
 		if(args.length == 3) {
 			try {
-				int rows = InputController.getInit(args[0], 10, 100);
-				int cols = InputController.getInit(args[1], 10, 100);
-				int percent = InputController.getInit(args[2], 10, 85);
+				int rows = InputController.getInit(args[0], InputController.MIN_VALUE, 100);
+				int cols = InputController.getInit(args[1], InputController.MIN_VALUE, 100);
+				int percent = InputController.getInit(args[2], InputController.MIN_VALUE, 85);
 				this.gameModel.setGrid(rows, cols)
 						.setPercent(percent)
 						.update();
@@ -213,13 +211,5 @@ public class GameController {
 		if(this.win) {
 			showAll();
 		}
-	}
-
-	public boolean newEventHappend() {
-		return newEventHappend;
-	}
-
-	public static void setNewEvent() {
-		newEventHappend = true;
 	}
 }

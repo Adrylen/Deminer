@@ -7,8 +7,6 @@
 
 package org.game.models;
 
-//import org.jetbrains.annotations.Contract;
-
 public enum NewGame {
 	BEGINNER(9,9,10),
 	INTERMEDIATE(16,16,40),

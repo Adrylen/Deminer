@@ -5,9 +5,9 @@
  *   Created by adrylen on 05/04/17.
 */
 
-package org.game.graphics.view;
+package org.game.graphics.view.frame;
 
-import org.game.graphics.controller.WindowDeminer;
+import org.game.graphics.engine.WindowDeminer;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

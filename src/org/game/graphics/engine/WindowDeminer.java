@@ -6,7 +6,7 @@
     Created by adrylen on 10/03/17.
 */
 
-package org.game.graphics.controller;
+package org.game.graphics.engine;
 
 import org.game.controller.GameController;
 import org.game.graphics.view.Window;
@@ -14,8 +14,6 @@ import org.game.models.GameGrid;
 import org.game.models.NewGame;
 
 public class WindowDeminer {
-	private static GameController controller;
-	private static GameGrid gameModel;
 	private static NewGame actualLevel;
 	private static Window window;
 
@@ -23,7 +21,7 @@ public class WindowDeminer {
 
 	private static int[] levelData;
 
-	public static void init() {
+	private static void init() {
 		window = new Window("Deminer", 1100, 700);
 	}
 
@@ -44,16 +42,16 @@ public class WindowDeminer {
 		templateLevel = false;
 		levelData = level;
 
-		gameModel = new GameGrid();
-		gameModel.setGrid(levelData[0],levelData[1]).setMines(level[2]);
-
-		controller = new GameController(gameModel);
-
+		GameGrid gameModel = new GameGrid();
+		gameModel.setGrid(levelData[0],levelData[1]).setMines(levelData[2]);
 		gameModel.addObserver(window);
+
+		GameController controller = new GameController(gameModel);
+
 		window.setObservable(gameModel);
 		window.useController(controller);
-
 		window.main();
+
 		gameModel.update();
 	}
 
@@ -65,8 +63,4 @@ public class WindowDeminer {
 		init();
 		create(NewGame.BEGINNER);
 	}
-        
-	public static Window getWindow() {
-            return window;
-        }
 }

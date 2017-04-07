@@ -6,6 +6,10 @@
 package org.game.graphics.view;
 
 import org.game.controller.GameController;
+import org.game.graphics.view.frame.DialogFrame;
+import org.game.graphics.view.panel.GraphicalGridView;
+import org.game.graphics.view.panel.InfoPanel;
+import org.game.graphics.view.menu.Menu;
 import org.game.models.GameGrid;
 import org.game.models.Scores;
 
@@ -24,20 +28,12 @@ import java.util.Observer;
 public class Window extends JFrame implements Observer {
 	private GameController controller;
 	private GraphicalGridView gridView;
-	private Menu menu;
 	private Observable gameModel;
 	private InfoPanel infoPanel;
-
-	private boolean start;
-
-    private int sizeX = 300;
-    private int sizeY = 400;
 
 	public Window(String str, int sizeX, int sizeY){
         super(str);
         this.gridView = null;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
         this.setSize(sizeX,sizeY);
 
         this.setContentPane(new JDesktopPane());
@@ -45,7 +41,7 @@ public class Window extends JFrame implements Observer {
         this.setLayout(new BorderLayout(5, 5));
 
         JMenuBar menuBar = new JMenuBar();
-        menuBar.add(menu = new Menu("Game"));
+        menuBar.add(new Menu("Game"));
         this.add(menuBar, BorderLayout.NORTH);
 
         infoPanel = new InfoPanel();
@@ -61,8 +57,6 @@ public class Window extends JFrame implements Observer {
 	}
 
     public void main() {
-		this.start = true;
-
 		if(this.gridView != null) {
 			//this.gridView.purge();
 			this.remove(this.gridView);
@@ -74,35 +68,7 @@ public class Window extends JFrame implements Observer {
         this.setVisible(true);
     }
 
-    /**
-     * @return the sizeX
-     */
-    public int getSizeX() {
-        return sizeX;
-    }
-
-    /**
-     * @param sizeX the sizeX to set
-     */
-    public void setSizeX(int sizeX) {
-        this.sizeX = sizeX;
-    }
-
-    /**
-     * @return the sizeY
-     */
-    public int getSizeY() {
-        return sizeY;
-    }
-
-    /**
-     * @param sizeY the sizeY to set
-     */
-    public void setSizeY(int sizeY) {
-        this.sizeY = sizeY;
-    }
-
-    public GraphicalGridView getPanel() {
+    private GraphicalGridView getPanel() {
     	for(Component c : this.getContentPane().getComponents()) {
     		if(c instanceof  GraphicalGridView) {
     			return (GraphicalGridView) c;
@@ -115,7 +81,7 @@ public class Window extends JFrame implements Observer {
 	public void update(Observable obs, Object obj) {
 		for(int i = 0; i < ((GameGrid) obj).getRows(); i++){
 			for(int j = 0; j < ((GameGrid) obj).getCols(); j++) {
-    	        this.getPanel().getButton(i,j).changeIcon();
+				this.getPanel().getButton(i,j).changeIcon();
 			}
 		}
 

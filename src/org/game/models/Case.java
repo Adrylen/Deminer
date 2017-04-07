@@ -27,12 +27,11 @@ public class Case {
 		this.symbol = Character.MIN_VALUE;
 	}
 
-	public Case show() {
+	public void show() {
 		this.hidden = false;
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
 		this.symbol = this.mined ? 'x' : this.neighbors != 0 ? (char)(this.neighbors+'0') : Character.MIN_VALUE;
-		return this;
 	}
 
 	public Case mine() {
@@ -40,40 +39,30 @@ public class Case {
 		return this;
 	}
 
-	public Case markAsMined() {
+	public void markAsMined() {
 		this.markedAsMined = true;
 		this.markedAsIndeterminate = false;
 		this.symbol = Character.MIN_VALUE;
-		return this;
 	}
 
-	public Case markAsIndeterminate() {
+	public void markAsIndeterminate() {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = true;
 		this.symbol = Character.MIN_VALUE;
-		return this;
 	}
 
-	public Case unmark() {
+	public void unmark() {
 		this.markedAsMined = false;
 		this.markedAsIndeterminate = false;
 		this.symbol = Character.MIN_VALUE;
-		return this;
 	}
 
-	public Case addNeighbor() {
+	public void addNeighbor() {
 		this.neighbors++;
-		return this;
 	}
 
-	public Case resetNeighbors() {
+	public void resetNeighbors() {
 		this.neighbors = 0;
-		return this;
-	}
-
-	public Case setSymbol(char symbol) {
-		this.symbol = symbol;
-		return this;
 	}
 
 	public boolean isHidden() {

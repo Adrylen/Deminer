@@ -9,8 +9,7 @@
 package org.game.controller;
 
 class InputController {
-
-
+	static int MIN_VALUE = 10;
 	static int getInit(String arg, int min, int max) {
 		int number = Integer.parseInt(arg);
 		return (number <= max) ? (number >= min) ? number : min : max;
