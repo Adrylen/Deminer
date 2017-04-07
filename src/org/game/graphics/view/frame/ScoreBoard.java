@@ -18,8 +18,6 @@ import java.awt.GridBagLayout;
 public class ScoreBoard extends JFrame {
 	private GridBagConstraints placement;
 	private JLabel[] highScores;
-	private ScoreBoard SB = this;
-	private boolean visible = true;
 	private int y = 0;
 
 	public ScoreBoard(String str, int width, int height) {
@@ -57,16 +55,5 @@ public class ScoreBoard extends JFrame {
 //		}), this.placement);
 
 		this.setVisible(true);
-	}
-
-//	public void toggleVisible() {
-//		visible = !visible;
-//	}
-
-	public void update() {
-		Scores scores = Scores.read();
-		for(int i = 0; i < Scores.LENGTH-1; ++i) {
-			highScores[i].setText((i+1)+". "+scores.getPseudo(i)+" : "+scores.getScore(i));
-		}
 	}
 }

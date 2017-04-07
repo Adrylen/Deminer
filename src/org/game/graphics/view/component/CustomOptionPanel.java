@@ -12,12 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  *
@@ -36,13 +35,13 @@ public class CustomOptionPanel extends JPanel{
     private JTextField text = null;
     private CustomOptionPanel ui = this;
     
-    public CustomOptionPanel(String str, int min, int max, int value, int minor, int major){
+    public CustomOptionPanel(String str, int min, int max, int initial_value, int minor, int major){
         this.setMin(min);
         this.setMax(max);
         this.setMinor(minor);
         this.setMajor(major);
         this.setStr(str);
-        this.setValue(value);
+        this.setValue(initial_value);
         this.setSecondMax(max);
     }
     
@@ -80,32 +79,23 @@ public class CustomOptionPanel extends JPanel{
         text = new JTextField(String.valueOf(value),3);
         text.setEnabled(false);
 	text.setHorizontalAlignment(SwingConstants.TRAILING);
-        text.getDocument().addDocumentListener(new DocumentListener(){
-            @Override
-            public void changedUpdate(DocumentEvent e){}
-            @Override
-            public void removeUpdate(DocumentEvent e){
-	            SwingUtilities.invokeLater(() -> {
-	            	try {
-			            if(Integer.parseInt(text.getText()) < min) {
-				            text.setText(min+"");
-			            }
-		            } catch(NumberFormatException nb) {
-			            text.setText(min+"");
-		            }
-	                slider.setValue(Integer.parseInt(text.getText()));
-	            });
-            }
-            @Override
-            public void insertUpdate(DocumentEvent e){
-	            SwingUtilities.invokeLater(() -> {
-		            if(Integer.parseInt(text.getText()) > max) {
-			            text.setText(max+"");
-		            }
-	                slider.setValue(Integer.parseInt(text.getText()));
-	            });
-            }
-        });
+		text.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent focusEvent) {}
+			@Override
+			public void focusLost(FocusEvent focusEvent) {
+				try {
+					if(Integer.parseInt(text.getText()) < min) {
+						text.setText(min+"");
+					} else if(Integer.parseInt(text.getText()) > max) {
+						text.setText(max+"");
+					}
+				} catch (NumberFormatException e) {
+					text.setText(min+"");
+				}
+				slider.setValue(Integer.parseInt(text.getText()));
+			}
+		});
         addC(this, text, 1, 1, GridBagConstraints.EAST);
     }
     

@@ -79,15 +79,7 @@ public class NewGameFrame extends JFrame{
     /**
      * @return the ui
      */
-    public NewGameFrame getUi() {
+    private NewGameFrame getUi() {
         return ui;
     }
-
-    /**
-     * @param ui the ui to set
-     */
-    public void setUi(NewGameFrame ui) {
-        this.ui = ui;
-    }
-
 }

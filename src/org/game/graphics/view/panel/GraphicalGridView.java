@@ -32,10 +32,6 @@ public class GraphicalGridView extends JPanel{
         }
     }
 
-    public GameGrid getGrid() {
-    	return this.grid;
-    }
-
     public GraphicalCellView getButton(int i, int j) {
     	int nb = this.grid.getCols()*i + j;
 		return (GraphicalCellView) this.getComponent(nb);

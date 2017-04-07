@@ -10,14 +10,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 /**
  *
@@ -40,58 +37,46 @@ public class NewGamePanel extends JPanel{
         this.main();
     }
     
-    public void main(){
+    private void main(){
         create();
         getChoice().setLayout(new GridLayout(5,1));
         getGroup().add(getBeginner());
         getGroup().add(getIntermediate());
         getGroup().add(getExpert());
         getGroup().add(getCust());
-        this.getCustom().getPanelR().getSlider().addChangeListener(new ChangeListener(){
-            @Override
-            public void stateChanged(ChangeEvent e){
-				updateMineSlider();
-            }
-        });
+        this.getCustom().getPanelR().getSlider().addChangeListener(e -> updateMineSlider());
 
-        this.getCustom().getPanelC().getSlider().addChangeListener(new ChangeListener(){
-            @Override
-            public void stateChanged(ChangeEvent e){
-                updateMineSlider();
-            }
-        });
+        this.getCustom().getPanelC().getSlider().addChangeListener(e -> updateMineSlider());
         this.setLayout(new GridBagLayout());
-        addC(getChoice(), getSelect(), 0, 0, 1, 1, GridBagConstraints.WEST);
-        addC(getChoice(), getBeginner(), 0, 1, 1, 1, GridBagConstraints.WEST);
-        addC(getChoice(), getIntermediate(), 0, 2, 1, 1, GridBagConstraints.WEST);
-        addC(getChoice(), getExpert(), 0, 3, 1, 1, GridBagConstraints.WEST);
-        addC(getChoice(), getCust(), 0, 4, 1, 1, GridBagConstraints.WEST);
-        addC(this, getChoice(), 0, 0, 1, 1, GridBagConstraints.CENTER);
-        addC(this, getCustom(), 0, 1, 1, 1, GridBagConstraints.CENTER);
-        addC(this, getStart(), 0, 2, 1, 1, GridBagConstraints.CENTER);
-        addC(this, getCancel(), 0, 3, 1, 1, GridBagConstraints.CENTER);
+        addC(getChoice(), getSelect(), 0, GridBagConstraints.WEST);
+        addC(getChoice(), getBeginner(), 1, GridBagConstraints.WEST);
+        addC(getChoice(), getIntermediate(), 2, GridBagConstraints.WEST);
+        addC(getChoice(), getExpert(), 3, GridBagConstraints.WEST);
+        addC(getChoice(), getCust(), 4, GridBagConstraints.WEST);
+        addC(this, getChoice(), 0, GridBagConstraints.CENTER);
+        addC(this, getCustom(), 1, GridBagConstraints.CENTER);
+        addC(this, getStart(), 2, GridBagConstraints.CENTER);
+        addC(this, getCancel(), 3, GridBagConstraints.CENTER);
 
 
     }
     
-    public void addC(JPanel p, JComponent c, int x, int y, int width, int height, int anchor){
+    private void addC(JPanel p, JComponent c, int y, int anchor){
         GridBagConstraints placement = new GridBagConstraints();
         placement.weightx = 100.0;
         placement.weighty = 100.0;
-	placement.gridx = x;
+	placement.gridx = 0;
 	placement.gridy = y;
-        placement.gridwidth = width;
-        placement.gridheight = height;
+        placement.gridwidth = 1;
+        placement.gridheight = 1;
         placement.insets = new Insets(5,5,5,5);
         placement.anchor = anchor;
         placement.fill = GridBagConstraints.NONE;
 	p.add(c, placement);
     }
     
-    public void create(){
-        this.getCust().addItemListener(new ItemListener(){
-        @Override
-            public void itemStateChanged(ItemEvent e) {
+    private void create(){
+        this.getCust().addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     getCustom().getPanelC().getSlider().setEnabled(true);
                     getCustom().getPanelR().getSlider().setEnabled(true);
@@ -108,11 +93,10 @@ public class NewGamePanel extends JPanel{
                     getCustom().getPanelR().getText().setEnabled(false);
                     getCustom().getPanelM().getText().setEnabled(false);
                 }
-            }
-    });
+            });
     }
 
-    public void updateMineSlider() {
+    private void updateMineSlider() {
         int i = (int) Math.ceil(getCustom().getPanelR().getSlider().getValue()*getCustom().getPanelC().getSlider().getValue()*0.85);
         if(i<getCustom().getPanelM().getSlider().getValue()){
             getCustom().getPanelM().setSecondMax(i);
@@ -139,24 +123,10 @@ public class NewGamePanel extends JPanel{
     }
 
     /**
-     * @param custom the custom to set
-     */
-    public void setCustom(CustomGamePanel custom) {
-        this.custom = custom;
-    }
-
-    /**
      * @return the choice
      */
-    public JPanel getChoice() {
+    private JPanel getChoice() {
         return choice;
-    }
-
-    /**
-     * @param choice the choice to set
-     */
-    public void setChoice(JPanel choice) {
-        this.choice = choice;
     }
 
     /**
@@ -167,24 +137,10 @@ public class NewGamePanel extends JPanel{
     }
 
     /**
-     * @param beginner the beginner to set
-     */
-    public void setBeginner(JRadioButton beginner) {
-        this.beginner = beginner;
-    }
-
-    /**
      * @return the intermediate
      */
     public JRadioButton getIntermediate() {
         return intermediate;
-    }
-
-    /**
-     * @param intermediate the intermediate to set
-     */
-    public void setIntermediate(JRadioButton intermediate) {
-        this.intermediate = intermediate;
     }
 
     /**
@@ -195,13 +151,6 @@ public class NewGamePanel extends JPanel{
     }
 
     /**
-     * @param expert the expert to set
-     */
-    public void setExpert(JRadioButton expert) {
-        this.expert = expert;
-    }
-
-    /**
      * @return the cust
      */
     public JRadioButton getCust() {
@@ -209,38 +158,17 @@ public class NewGamePanel extends JPanel{
     }
 
     /**
-     * @param cust the cust to set
-     */
-    public void setCust(JRadioButton cust) {
-        this.cust = cust;
-    }
-
-    /**
      * @return the select
      */
-    public JLabel getSelect() {
+    private JLabel getSelect() {
         return select;
-    }
-
-    /**
-     * @param select the select to set
-     */
-    public void setSelect(JLabel select) {
-        this.select = select;
     }
 
     /**
      * @return the group
      */
-    public ButtonGroup getGroup() {
+    private ButtonGroup getGroup() {
         return group;
-    }
-
-    /**
-     * @param group the group to set
-     */
-    public void setGroup(ButtonGroup group) {
-        this.group = group;
     }
 
     /**
@@ -251,24 +179,9 @@ public class NewGamePanel extends JPanel{
     }
 
     /**
-     * @param start the start to set
-     */
-    public void setStart(JButton start) {
-        this.start = start;
-    }
-
-    /**
      * @return the cancel
      */
     public JButton getCancel() {
         return cancel;
     }
-
-    /**
-     * @param cancel the cancel to set
-     */
-    public void setCancel(JButton cancel) {
-        this.cancel = cancel;
-    }
-
 }

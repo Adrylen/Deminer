@@ -13,8 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class DialogFrame {
-	public static final int RESTART_OPTION = 0;
-	public static final int QUIT_OPTION = 1;
+	private static final int RESTART_OPTION = 0;
+	private static final int QUIT_OPTION = 1;
 
 	public static void alert(JFrame frame, boolean win) {
 		int action = JOptionPane.showOptionDialog(
