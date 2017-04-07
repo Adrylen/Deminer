@@ -4,7 +4,9 @@ import org.game.console.view.Console;
 import org.game.controller.GameController;
 import org.game.models.GameGrid;
 
-// TODO Comments
+/* This is the main program of the Terminal version
+* of the Deminor
+*/
 public class Deminer {
 	private Console view;
 	private GameGrid gameModel;

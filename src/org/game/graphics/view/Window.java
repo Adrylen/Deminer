@@ -25,50 +25,50 @@ public class Window extends JFrame implements Observer {
 	private InfoPanel infoPanel;
 
 	public Window(String str, int sizeX, int sizeY){
-        super(str);
-        this.gridView = null;
-        this.setSize(sizeX,sizeY);
+		super(str);
+		this.gridView = null;
+		this.setSize(sizeX,sizeY);
 
-        this.setContentPane(new JDesktopPane());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout(5, 5));
+		this.setContentPane(new JDesktopPane());
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new BorderLayout(5, 5));
 
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.add(new Menu("Game"));
-        this.add(menuBar, BorderLayout.NORTH);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.add(new Menu("Game"));
+		this.add(menuBar, BorderLayout.NORTH);
 
-        infoPanel = new InfoPanel();
-        this.add(infoPanel, BorderLayout.SOUTH);
-    }
-
-    public void setObservable(Observable gameModel) {
-    	this.gameModel = gameModel;
-    }
-
-	public void useController(GameController controller) {
-    	this.controller = controller;
+		infoPanel = new InfoPanel();
+		this.add(infoPanel, BorderLayout.SOUTH);
 	}
 
-    public void main() {
+	public void setObservable(Observable gameModel) {
+		this.gameModel = gameModel;
+	}
+
+	public void useController(GameController controller) {
+		this.controller = controller;
+	}
+
+	public void main() {
 		if(this.gridView != null) {
-			//this.gridView.purge();
+//this.gridView.purge();
 			this.remove(this.gridView);
 		}
 		this.gridView = new GraphicalGridView((GameGrid) this.gameModel, this.controller);
-        this.add(this.gridView, BorderLayout.CENTER);
-        this.infoPanel.setSmiley("ʕ•ᴥ•ʔ");
+		this.add(this.gridView, BorderLayout.CENTER);
+		this.infoPanel.setSmiley("ʕ•ᴥ•ʔ");
 
-        this.setVisible(true);
-    }
+		this.setVisible(true);
+	}
 
-    private GraphicalGridView getPanel() {
-    	for(Component c : this.getContentPane().getComponents()) {
-    		if(c instanceof  GraphicalGridView) {
-    			return (GraphicalGridView) c;
-		    }
-	    }
-	    return null;
-    }
+	private GraphicalGridView getPanel() {
+		for(Component c : this.getContentPane().getComponents()) {
+			if(c instanceof  GraphicalGridView) {
+				return (GraphicalGridView) c;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void update(Observable obs, Object obj) {

@@ -1,7 +1,7 @@
 package org.game.controller;
 
 /* This is the Input Manager for the Terminal
- * version of the Deminor
+* version of the Deminor
 */
 class InputController {
 	static int MIN_VALUE = 10;

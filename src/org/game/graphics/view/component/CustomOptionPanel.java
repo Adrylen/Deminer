@@ -15,65 +15,65 @@ import java.awt.event.FocusListener;
 import javax.swing.SwingConstants;
 
 /* Here we create and control one element of the subsection
- * The listeners are used to link up the different elements
+* The listeners are used to link up the different elements
 */
 public class CustomOptionPanel extends JPanel{
-    
-    private String str;
-    private int min;
-    private int max;
-    private int secondMax;
-    private int value;
-    private int minor;
-    private int major;
-    private JSlider slider = null;
-    private JTextField text = null;
-    private CustomOptionPanel ui = this;
-    
-    public CustomOptionPanel(String str, int min, int max, int initial_value, int minor, int major){
-        this.setMin(min);
-        this.setMax(max);
-        this.setMinor(minor);
-        this.setMajor(major);
-        this.setStr(str);
-        this.setValue(initial_value);
-        this.setSecondMax(max);
-    }
-    
-    public CustomOptionPanel init(){
-        
-	this.setLayout(new GridBagLayout());
-	this.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0)); 
-        this.addLabel();
-        this.addSlider();
-        this.addText();
 
-        return this;
-    }
+	private String str;
+	private int min;
+	private int max;
+	private int secondMax;
+	private int value;
+	private int minor;
+	private int major;
+	private JSlider slider = null;
+	private JTextField text = null;
+	private CustomOptionPanel ui = this;
 
-    private void addSlider(){
-        slider = new JSlider(getMin(), getMax(), getValue());
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-        slider.setMinorTickSpacing(minor);
-        slider.setMajorTickSpacing(major);
-        slider.setEnabled(false);
-        slider.addChangeListener(e -> {
-            ui.setValue(slider.getValue());
-            ui.setStr(String.valueOf(value));
-            text.setText(str);
-        });
-        addC(this, slider, 0, 1, GridBagConstraints.WEST);
-    }
-    
-    private void addLabel(){
-        addC(this, new JLabel(str+" : "), 0, 0, GridBagConstraints.WEST);
-    }
-    
-    private void addText(){
-        text = new JTextField(String.valueOf(value),3);
-        text.setEnabled(false);
-	text.setHorizontalAlignment(SwingConstants.TRAILING);
+	public CustomOptionPanel(String str, int min, int max, int initial_value, int minor, int major){
+		this.setMin(min);
+		this.setMax(max);
+		this.setMinor(minor);
+		this.setMajor(major);
+		this.setStr(str);
+		this.setValue(initial_value);
+		this.setSecondMax(max);
+	}
+
+	public CustomOptionPanel init(){
+
+		this.setLayout(new GridBagLayout());
+		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+		this.addLabel();
+		this.addSlider();
+		this.addText();
+
+		return this;
+	}
+
+	private void addSlider(){
+		slider = new JSlider(getMin(), getMax(), getValue());
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
+		slider.setMinorTickSpacing(minor);
+		slider.setMajorTickSpacing(major);
+		slider.setEnabled(false);
+		slider.addChangeListener(e -> {
+			ui.setValue(slider.getValue());
+			ui.setStr(String.valueOf(value));
+			text.setText(str);
+		});
+		addC(this, slider, 0, 1, GridBagConstraints.WEST);
+	}
+
+	private void addLabel(){
+		addC(this, new JLabel(str+" : "), 0, 0, GridBagConstraints.WEST);
+	}
+
+	private void addText(){
+		text = new JTextField(String.valueOf(value),3);
+		text.setEnabled(false);
+		text.setHorizontalAlignment(SwingConstants.TRAILING);
 		text.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent focusEvent) {}
@@ -91,72 +91,72 @@ public class CustomOptionPanel extends JPanel{
 				slider.setValue(Integer.parseInt(text.getText()));
 			}
 		});
-        addC(this, text, 1, 1, GridBagConstraints.EAST);
-    }
-    
-    private void addC(JPanel p, JComponent c, int x, int y, int anchor){
-        GridBagConstraints placement = new GridBagConstraints();
-        placement.weightx = 100.0;
-        placement.weighty = 100.0;
-	placement.gridx = x;
-	placement.gridy = y;
-        placement.gridwidth = 1;
-        placement.gridheight = 1;
-        placement.insets = new Insets(5,5,5,5);
-        placement.anchor = anchor;
-        placement.fill = GridBagConstraints.NONE;
-	p.add(c, placement);
-    }
+		addC(this, text, 1, 1, GridBagConstraints.EAST);
+	}
 
-    public void setStr(String str) {
-        this.str = str;
-    }
+	private void addC(JPanel p, JComponent c, int x, int y, int anchor){
+		GridBagConstraints placement = new GridBagConstraints();
+		placement.weightx = 100.0;
+		placement.weighty = 100.0;
+		placement.gridx = x;
+		placement.gridy = y;
+		placement.gridwidth = 1;
+		placement.gridheight = 1;
+		placement.insets = new Insets(5,5,5,5);
+		placement.anchor = anchor;
+		placement.fill = GridBagConstraints.NONE;
+		p.add(c, placement);
+	}
 
-    private int getMin() {
-        return min;
-    }
+	public void setStr(String str) {
+		this.str = str;
+	}
 
-    private void setMin(int min) {
-        this.min = min;
-    }
+	private int getMin() {
+		return min;
+	}
 
-    public int getMax() {
-        return max;
-    }
+	private void setMin(int min) {
+		this.min = min;
+	}
 
-    public void setMax(int max) {
-        this.max = max;
-    }
+	public int getMax() {
+		return max;
+	}
 
-    private int getValue() {
-        return value;
-    }
+	public void setMax(int max) {
+		this.max = max;
+	}
 
-    private void setValue(int value) {
-        this.value = value;
-    }
+	private int getValue() {
+		return value;
+	}
 
-    private void setMinor(int minor) {
-        this.minor = minor;
-    }
+	private void setValue(int value) {
+		this.value = value;
+	}
 
-    private void setMajor(int major) {
-        this.major = major;
-    }
+	private void setMinor(int minor) {
+		this.minor = minor;
+	}
 
-    public JSlider getSlider() {
-        return slider;
-    }
+	private void setMajor(int major) {
+		this.major = major;
+	}
 
-    public JTextField getText() {
-        return text;
-    }
+	public JSlider getSlider() {
+		return slider;
+	}
 
-    public int getSecondMax() {
-        return secondMax;
-    }
+	public JTextField getText() {
+		return text;
+	}
 
-    public void setSecondMax(int secondMax) {
-        this.secondMax = secondMax;
-    }
+	public int getSecondMax() {
+		return secondMax;
+	}
+
+	public void setSecondMax(int secondMax) {
+		this.secondMax = secondMax;
+	}
 }

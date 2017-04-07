@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /* This dialog frame appears when the player loose
- * or win and permits him to enter his pseudo,
- * restart or quit.
+* or win and permits him to enter his pseudo,
+* restart or quit.
 */
 public class DialogFrame {
 	private static final int RESTART_OPTION = 0;

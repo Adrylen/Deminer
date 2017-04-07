@@ -4,8 +4,8 @@ import org.game.models.Case;
 import org.game.models.GameGrid;
 
 /* Here we check if the player win or loose,
- * how many mines there are around a case,
- * and we update the model
+* how many mines there are around a case,
+* and we update the model
 */
 public class GameController {
 	private GameGrid gameModel;
@@ -43,8 +43,8 @@ public class GameController {
 				int cols = InputController.getInit(args[1], InputController.MIN_VALUE, 100);
 				int percent = InputController.getInit(args[2], InputController.MIN_VALUE, 85);
 				this.gameModel.setGrid(rows, cols)
-						.setPercent(percent)
-						.update();
+					.setPercent(percent)
+					.update();
 				return true;
 			} catch(NumberFormatException e) {
 				System.out.println("Need integer inputs...");
@@ -194,9 +194,9 @@ public class GameController {
 		for(Case[] row : this.gameModel.getGrid()) {
 			for(Case gameCase : row) {
 				if(!gameCase.isHidden() && gameCase.isMined()) {
-						this.loose = true;
-						showAll();
-						return;
+					this.loose = true;
+					showAll();
+					return;
 				} else if(gameCase.isHidden() && gameCase.isMined() && !gameCase.isMarkedAsMined()) {
 					this.win = false;
 				} else if(gameCase.isHidden() && !gameCase.isMined() &&!gameCase.hasNeighbors()) {

@@ -12,61 +12,61 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 /* This permits to the player to change directly
- * the level of the Deminor, to access to the New
- * Game menu or just to restart a new game.
+* the level of the Deminor, to access to the New
+* Game menu or just to restart a new game.
 */
 class SubMenu extends JMenu {
-    private NewGameFrame custom = null;
-    
-    SubMenu(String str){
-        super(str);
-        this.main();
-    }
-    
-    private void main(){
-        this.createNewLevel("Beginner");
-        this.createNewLevel("Intermediate");
-        this.createNewLevel("Expert");
-        this.createCustomMenu();
-    }
-    
-    private void createCustomMenu(){
-       this.add(new JMenuItem(new AbstractAction("Custom"){
-           @Override
-           public void actionPerformed(ActionEvent e){
-               if(custom == null){
-                    custom = new NewGameFrame("custom");
-                    custom.main();
-               }
-               else{
-                    custom.setVisible(true);
-               }
-           }
-       }));
-    }
+	private NewGameFrame custom = null;
 
-    private void createNewLevel(String str) {
-    	JMenuItem menu = new JMenuItem();
+	SubMenu(String str){
+		super(str);
+		this.main();
+	}
 
-    	menu.setAction(new AbstractAction() {
-		    @Override
-		    public void actionPerformed(ActionEvent actionEvent) {
-		    	switch(str) {
-				    case "Beginner" : WindowDeminer.create(NewGame.BEGINNER); break;
-				    case "Intermediate" : WindowDeminer.create(NewGame.INTERMEDIATE); break;
-				    case "Expert" : WindowDeminer.create(NewGame.EXPERT); break;
-			    }
-		    }
-	    });
+	private void main(){
+		this.createNewLevel("Beginner");
+		this.createNewLevel("Intermediate");
+		this.createNewLevel("Expert");
+		this.createCustomMenu();
+	}
 
-	    menu.setAccelerator(KeyStroke.getKeyStroke(
-		    str.equals("Beginner") ? KeyEvent.VK_B :
-			str.equals("Intermediate") ? KeyEvent.VK_I :
-			KeyEvent.VK_E,
-	        KeyEvent.CTRL_DOWN_MASK
-	    ));
+	private void createCustomMenu(){
+		this.add(new JMenuItem(new AbstractAction("Custom"){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if(custom == null){
+					custom = new NewGameFrame("custom");
+					custom.main();
+				}
+				else{
+					custom.setVisible(true);
+				}
+			}
+		}));
+	}
 
-    	menu.setText(str);
-	    this.add(menu);
-    }
+	private void createNewLevel(String str) {
+		JMenuItem menu = new JMenuItem();
+
+		menu.setAction(new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				switch(str) {
+					case "Beginner" : WindowDeminer.create(NewGame.BEGINNER); break;
+					case "Intermediate" : WindowDeminer.create(NewGame.INTERMEDIATE); break;
+					case "Expert" : WindowDeminer.create(NewGame.EXPERT); break;
+				}
+			}
+		});
+
+		menu.setAccelerator(KeyStroke.getKeyStroke(
+			str.equals("Beginner") ? KeyEvent.VK_B :
+				str.equals("Intermediate") ? KeyEvent.VK_I :
+					KeyEvent.VK_E,
+			KeyEvent.CTRL_DOWN_MASK
+		));
+
+		menu.setText(str);
+		this.add(menu);
+	}
 }

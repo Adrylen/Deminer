@@ -3,8 +3,8 @@ package org.game.models;
 import java.util.Observable;
 
 /* This is the grid of the Deminor.
- * It permits to create a Deminor with
- * the right size and number of mines.
+* It permits to create a Deminor with
+* the right size and number of mines.
 */
 public class GameGrid extends Observable {
 	private Case grid[][];
